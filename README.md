@@ -9,7 +9,7 @@
 
 
 * For illustration purpose, we took the dataset **data_example/baron_human.rds**. as an example.
-    * Install: You can install the **scLearn** package from Github using **devtools** packages with R>=3.6.1.
+    * **Install**: You can install the **scLearn** package from Github using **devtools** packages with R>=3.6.1.
     ```
     library(devtools)
     install.github("bm2-lab/scLearn")
