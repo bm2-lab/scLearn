@@ -163,7 +163,7 @@ scLearn_classifier<-function(high_varGene_names,expression_profile,sample_inform
     print(paste("Calculating",r))
     trans_result<-runDCA(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,strength = 0.1,seed=r)
     trans_matrix[[r]]<-trans_result$trans_matrix
-    thre_result_trans_cluster<-Threshold_similarity(trans_result$expression_profile_trans,trans_result$sample_information,cutoff=cutoff,plot=F)
+    thre_result_trans_cluster<-Threshold_similarity(trans_result$expression_profile_trans,trans_result$sample_information,cutoff=cutoff)
     threshold_cluster_trans[[r]]<-thre_result_trans_cluster$threshold
     feature_matrix_trans[[r]]<-Feature_cluster(trans_result$expression_profile_trans,trans_result$sample_information)
   }
