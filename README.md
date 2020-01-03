@@ -50,3 +50,13 @@
     scLearn_predict_result<-scLearn_predict(scLearn_classifier_result,data_qc_query$expression_profile)
     
     ```
+
+| dataset | description | PMID | trained model names |
+| :------: | :------: | :------: | :------: |
+| Baron | Mouse pancreas |  | pancreas_mouse_baron.rds |
+| Baron | Human pancreas |  | pancreas_human_baron.rds |
+| Muraro | Human pancreas |  | pancreas_human_muraro.rds |
+| Segerstolpe | Human pancreas |  | pancreas_human_segerstolpe.rds |
+| Xin | Human pancreas |  | pancreas_human_xin.rds |
+
+
