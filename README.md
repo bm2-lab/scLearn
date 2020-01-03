@@ -76,6 +76,17 @@
 | primary_visual_cortex_mouse_AMB_shallow_annotation_92.rds | Primary mouse visual cortex |  | AMB |  |
 | PBMC_human_zheng_sorted.rds | FACS-sorted PBMC |  | Zheng sorted |  |
 | PBMC_human_zheng_68K.rds | PBMC |  | Zheng 68K |  |
-| primary_visual_cortex_mouse_VISP.rds | Mouse primary visual cortex |  | VISP |  |
-
+| primary_visual_cortex_mouse_VISP_shallow_annotation.rds | Mouse primary visual cortex |  | VISP |  |
+| primary_visual_cortex_mouse_VISP_deep_annotation.rds | Mouse primary visual cortex |  | VISP |  |
+| anterior_lateral_motor_area_mouse_ALM_shallow_annotation.rds | Mouse anterior lateral motor area |  | ALM |  |
+| anterior_lateral_motor_area_mouse_ALM_deep_annotation.rds | Mouse anterior lateral motor area |  | ALM |  |
+| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus |  | MTG |  |
+| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus |  | MTG |  |
+| PBMC_human_a10Xv2.rds | Human PBMC |  | PbmcBench pbmc1.10Xv2 |  |
+| PBMC_human_a10Xv3.rds | Human PBMC |  | PbmcBench pbmc1.10Xv3 |  |
+| PBMC_human_CL.rds | Human PBMC |  | PbmcBench pbmc1.CL |  |
+| PBMC_human_DR.rds | Human PBMC |  | PbmcBench pbmc1.DR |  |
+| PBMC_human_iD.rds | Human PBMC |  | PbmcBench pbmc1.iD |  |
+| PBMC_human_SM2.rds | Human PBMC |  | PbmcBench pbmc1.SM2 |  |
+| PBMC_human_SW.rds | Human PBMC |  | PbmcBench pbmc1.SW |  |
 
