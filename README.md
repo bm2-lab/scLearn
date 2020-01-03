@@ -51,12 +51,31 @@
     
     ```
 
-| dataset | description | PMID | trained model names |
-| :------: | :------: | :------: | :------: |
-| Baron | Mouse pancreas |  | pancreas_mouse_baron.rds |
-| Baron | Human pancreas |  | pancreas_human_baron.rds |
-| Muraro | Human pancreas |  | pancreas_human_muraro.rds |
-| Segerstolpe | Human pancreas |  | pancreas_human_segerstolpe.rds |
-| Xin | Human pancreas |  | pancreas_human_xin.rds |
+| Trained model names | Description | No. of cell types | corresponding dataset | PMID |
+| :------: | :------: | :------: | :------: | :------: |
+| pancreas_mouse_baron.rds | Mouse pancreas |  | Baron |  |
+| pancreas_human_baron.rds | Human pancreas |  | Baron |  |
+| pancreas_human_muraro.rds | Human pancreas |  | Muraro |  |
+| pancreas_human_segerstolpe.rds | Human pancreas |  | Segerstolpe |  |
+| pancreas_human_xin.rds | Human pancreas |  | Xin |  |
+| embryo_development_mouse_deng.rds | Mouse embryo development |  | Deng |  |
+| cerebral_cortex_human_pollen.rds | Human cerebral cortex |  | Pollen |  |
+| colorectal_tumor_human_li.rds | Human colorectal tumors |  | Li |  |
+| brain_mouse_usoskin.rds | Mouse brain |  | Usoskin |  |
+| cortex_mouse_tasic.rds | Mouse cortex |  | Tasic |  |
+| embryo_stem_cell_mouse_klein.rds | Mouse embryo stem cells |  | Klein |  |
+| brain_mouse_zeisel.rds | Mouse brain |  | Zeisel |  |
+| retina_mouse_shekhar_shallow_annotation.rds | Mouse retina |  | Shekhar |  |
+| retina_mouse_shekhar_deep_annotation.rds | Mouse retina |  | Shekhar |  |
+| retina_mouse_macosko.rds | Mouse retina |  | Macosko |  |
+| lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines |  | CellBench10X |  |
+| lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines |  | CellBenchCelSeq |  |
+| whole_mus_musculus_mouse_TM.rds | Whole Mus musculus |  | TM |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_3.rds | Primary mouse visual cortex |  | AMB |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_16.rds | Primary mouse visual cortex |  | AMB |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_92.rds | Primary mouse visual cortex |  | AMB |  |
+| PBMC_human_zheng_sorted.rds | FACS-sorted PBMC |  | Zheng sorted |  |
+| PBMC_human_zheng_68K.rds | PBMC |  | Zheng 68K |  |
+| primary_visual_cortex_mouse_VISP.rds | Mouse primary visual cortex |  | VISP |  |
 
 
