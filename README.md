@@ -1,6 +1,6 @@
 # **scLearn: Learning for single cell assignment**
 
-* **scLearn** is a learning-based model for single cell assignment. We applied scLearn to four main tasks of single cell assignment with different perspectives and annotation levels cross 35 datasets and proved that scLearn outperforms all existing methods.
+* **scLearn** is a learning-based framework for single cell assignment. We applied scLearn to four main tasks of single cell assignment with different perspectives and annotation levels across 30 datasets and proved that scLearn outperforms all existing methods.
 * **scLearn** intuitively carrys out a search like scmap-cluster by measuring the similarity between query cells and each reference cluster centroid but with metric and similarity threshold learned from trained reference datasets. It consists of three steps: data preprocessing, model learning and assignment:
   * **Data preprocessing**: Besides the routine normalization and quality control, scLearn removes rare cell types whose cell number are less than 10 from reference datasets. After the two steps above, scLearn performs feature selection with M3Drop which is based on dropout rate and has been proved suitable for single cell assignment.
   * **Model learning**: scLearn builds a learning-based model. In this model, scLearn first randomly selects a part of samples from each class of the labeled reference with the information (similar or dissimilar) of these selected samples. By bootstrapping ten times, scLearn finally gets a stable classifier with learned metric specific to the trained rederence datasets.
@@ -12,7 +12,7 @@
     * **Install**: You can install the **scLearn** package from Github using **devtools** packages with R>=3.6.1.
     ```
     library(devtools)
-    install.github("bm2-lab/scLearn")
+    install_github("bm2-lab/scLearn")
     ```
     * **Data preprocessing**:
     ```
