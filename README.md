@@ -34,7 +34,7 @@
     scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information)
     ```
     
-    * **Assignment**:
+    * **Cell assignment**:
     ```
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
@@ -46,13 +46,14 @@
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
     data_type_filtered2<-data_qc_query
     
-    # assignment with trained classifier
+    # Assignment with trained model above
     scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
+* **Trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered the whole trained models for the 30 datasets used in our study. These datasets contained commonly used issues, such as brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with course-grained and fine-grained annotation by different studies, which will be extremely benefit for the following directly using of other researchers. The information of each trained scLearn models is shown below:
 
-| Trained model names | Description | No. of cell types | corresponding dataset | PMID |
-| :------: | :------: | :------: | :------: | :------: |
+  * | Trained model names | Description | No. of cell types | corresponding dataset | PMID |
+    | :------: | :------: | :------: | :------: | :------: |
 | pancreas_mouse_baron.rds | Mouse pancreas | 9 | Baron |  |
 | pancreas_human_baron.rds | Human pancreas | 13 | Baron |  |
 | pancreas_human_muraro.rds | Human pancreas | 8 | Muraro |  |
@@ -90,3 +91,35 @@
 | PBMC_human_SM2.rds | Human PBMC | 6 | PbmcBench pbmc1.SM2 |  |
 | PBMC_human_SW.rds | Human PBMC | 7 | PbmcBench pbmc1.SW |  |
 
+  * **Cell Assignment with pre-trained models**:
+    ```
+    # loading the quary cell and performing cell quality control
+    data2<-readRDS('example_data/xin-human.rds')
+    rawcounts2=assays(data2)[[1]]
+    ann2<-as.character(data2$cell_type1)
+    names(ann2)<-colnames(data2)
+    ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
+    rawcounts2<-rawcounts2[,names(ann2)]
+    data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
+    data_type_filtered2<-data_qc_query
+    ```
+    ```
+    # Assignment with pre-trained models
+    # Take pancreas_human_baron.rds as example
+    scLearn_model_learning_result<-readRDS("Trained_models/pancreas_human_baron.rds")
+    ```
+    ```
+    # Check the cell types in this reference
+    length(scLearn_model_learning_result$cell_type_information)
+    names(scLearn_model_learning_result$cell_type_information)
+    ```
+    13
+    'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 
+    'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann' 
+
+    ```
+    # Predict the cell types
+    scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
+    
+    ```
+    
