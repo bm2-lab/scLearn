@@ -54,8 +54,8 @@
 
   * | Trained model names | Description | No. of cell types | corresponding dataset | PMID |
     | :------: | :------: | :------: | :------: | :------: |
-| pancreas_mouse_baron.rds | Mouse pancreas | 9 | Baron |  |
-| pancreas_human_baron.rds | Human pancreas | 13 | Baron |  |
+    | pancreas_mouse_baron.rds | Mouse pancreas | 9 | Baron |  |
+    | pancreas_human_baron.rds | Human pancreas | 13 | Baron |  |
 | pancreas_human_muraro.rds | Human pancreas | 8 | Muraro |  |
 | pancreas_human_segerstolpe.rds | Human pancreas | 8 | Segerstolpe |  |
 | pancreas_human_xin.rds | Human pancreas | 4 | Xin |  |
@@ -114,6 +114,7 @@
     names(scLearn_model_learning_result$cell_type_information)
     ```
     13
+    
     'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 
     'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann' 
 
