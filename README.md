@@ -53,40 +53,40 @@
 
 | Trained model names | Description | No. of cell types | corresponding dataset | PMID |
 | :------: | :------: | :------: | :------: | :------: |
-| pancreas_mouse_baron.rds | Mouse pancreas |  | Baron |  |
-| pancreas_human_baron.rds | Human pancreas |  | Baron |  |
-| pancreas_human_muraro.rds | Human pancreas |  | Muraro |  |
-| pancreas_human_segerstolpe.rds | Human pancreas |  | Segerstolpe |  |
-| pancreas_human_xin.rds | Human pancreas |  | Xin |  |
-| embryo_development_mouse_deng.rds | Mouse embryo development |  | Deng |  |
-| cerebral_cortex_human_pollen.rds | Human cerebral cortex |  | Pollen |  |
-| colorectal_tumor_human_li.rds | Human colorectal tumors |  | Li |  |
-| brain_mouse_usoskin.rds | Mouse brain |  | Usoskin |  |
-| cortex_mouse_tasic.rds | Mouse cortex |  | Tasic |  |
-| embryo_stem_cell_mouse_klein.rds | Mouse embryo stem cells |  | Klein |  |
-| brain_mouse_zeisel.rds | Mouse brain |  | Zeisel |  |
-| retina_mouse_shekhar_shallow_annotation.rds | Mouse retina |  | Shekhar |  |
-| retina_mouse_shekhar_deep_annotation.rds | Mouse retina |  | Shekhar |  |
-| retina_mouse_macosko.rds | Mouse retina |  | Macosko |  |
-| lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines |  | CellBench10X |  |
-| lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines |  | CellBenchCelSeq |  |
-| whole_mus_musculus_mouse_TM.rds | Whole Mus musculus |  | TM |  |
-| primary_visual_cortex_mouse_AMB_shallow_annotation_3.rds | Primary mouse visual cortex |  | AMB |  |
-| primary_visual_cortex_mouse_AMB_shallow_annotation_16.rds | Primary mouse visual cortex |  | AMB |  |
-| primary_visual_cortex_mouse_AMB_shallow_annotation_92.rds | Primary mouse visual cortex |  | AMB |  |
-| PBMC_human_zheng_sorted.rds | FACS-sorted PBMC |  | Zheng sorted |  |
-| PBMC_human_zheng_68K.rds | PBMC |  | Zheng 68K |  |
-| primary_visual_cortex_mouse_VISP_shallow_annotation.rds | Mouse primary visual cortex |  | VISP |  |
-| primary_visual_cortex_mouse_VISP_deep_annotation.rds | Mouse primary visual cortex |  | VISP |  |
-| anterior_lateral_motor_area_mouse_ALM_shallow_annotation.rds | Mouse anterior lateral motor area |  | ALM |  |
-| anterior_lateral_motor_area_mouse_ALM_deep_annotation.rds | Mouse anterior lateral motor area |  | ALM |  |
-| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus |  | MTG |  |
-| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus |  | MTG |  |
-| PBMC_human_a10Xv2.rds | Human PBMC |  | PbmcBench pbmc1.10Xv2 |  |
-| PBMC_human_a10Xv3.rds | Human PBMC |  | PbmcBench pbmc1.10Xv3 |  |
-| PBMC_human_CL.rds | Human PBMC |  | PbmcBench pbmc1.CL |  |
-| PBMC_human_DR.rds | Human PBMC |  | PbmcBench pbmc1.DR |  |
-| PBMC_human_iD.rds | Human PBMC |  | PbmcBench pbmc1.iD |  |
-| PBMC_human_SM2.rds | Human PBMC |  | PbmcBench pbmc1.SM2 |  |
-| PBMC_human_SW.rds | Human PBMC |  | PbmcBench pbmc1.SW |  |
+| pancreas_mouse_baron.rds | Mouse pancreas | 9 | Baron |  |
+| pancreas_human_baron.rds | Human pancreas | 13 | Baron |  |
+| pancreas_human_muraro.rds | Human pancreas | 8 | Muraro |  |
+| pancreas_human_segerstolpe.rds | Human pancreas | 8 | Segerstolpe |  |
+| pancreas_human_xin.rds | Human pancreas | 4 | Xin |  |
+| embryo_development_mouse_deng.rds | Mouse embryo development | 4 | Deng |  |
+| cerebral_cortex_human_pollen.rds | Human cerebral cortex | 9 | Pollen |  |
+| colorectal_tumor_human_li.rds | Human colorectal tumors | 5 | Li |  |
+| brain_mouse_usoskin.rds | Mouse brain | 4 | Usoskin |  |
+| cortex_mouse_tasic.rds | Mouse cortex | 17 | Tasic |  |
+| embryo_stem_cells_mouse_klein.rds | Mouse embryo stem cells | 4 | Klein |  |
+| brain_mouse_zeisel.rds | Mouse brain | 9 | Zeisel |  |
+| retina_mouse_shekhar_shallow_annotation.rds | Mouse retina | 4 | Shekhar |  |
+| retina_mouse_shekhar_deep_annotation.rds | Mouse retina | 17 | Shekhar |  |
+| retina_mouse_macosko.rds | Mouse retina | 12 | Macosko |  |
+| lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines | 5 | CellBench10X |  |
+| lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines | 5 | CellBenchCelSeq |  |
+| whole_mus_musculus_mouse_TM.rds | Whole Mus musculus | 55 | TM |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_3.rds | Primary mouse visual cortex | 3 | AMB |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_16.rds | Primary mouse visual cortex | 14 | AMB |  |
+| primary_visual_cortex_mouse_AMB_shallow_annotation_92.rds | Primary mouse visual cortex | 68 | AMB |  |
+| PBMC_human_zheng_sorted.rds | FACS-sorted PBMC | 10 | Zheng sorted |  |
+| PBMC_human_zheng_68K.rds | PBMC | 11 | Zheng 68K |  |
+| primary_visual_cortex_mouse_VISP_shallow_annotation.rds | Mouse primary visual cortex | 3 | VISP |  |
+| primary_visual_cortex_mouse_VISP_deep_annotation.rds | Mouse primary visual cortex | 33 | VISP |  |
+| anterior_lateral_motor_area_mouse_ALM_shallow_annotation.rds | Mouse anterior lateral motor area | 3 | ALM |  |
+| anterior_lateral_motor_area_mouse_ALM_deep_annotation.rds | Mouse anterior lateral motor area | 32 | ALM |  |
+| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus | 3 | MTG |  |
+| middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus | 34 | MTG |  |
+| PBMC_human_a10Xv2.rds | Human PBMC | 9 | PbmcBench pbmc1.10Xv2 |  |
+| PBMC_human_a10Xv3.rds | Human PBMC | 8 | PbmcBench pbmc1.10Xv3 |  |
+| PBMC_human_CL.rds | Human PBMC | 7 | PbmcBench pbmc1.CL |  |
+| PBMC_human_DR.rds | Human PBMC | 9 | PbmcBench pbmc1.DR |  |
+| PBMC_human_iD.rds | Human PBMC | 7 | PbmcBench pbmc1.iD |  |
+| PBMC_human_SM2.rds | Human PBMC | 6 | PbmcBench pbmc1.SM2 |  |
+| PBMC_human_SW.rds | Human PBMC | 7 | PbmcBench pbmc1.SW |  |
 
