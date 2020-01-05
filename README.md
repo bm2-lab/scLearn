@@ -1,10 +1,10 @@
 # **scLearn: Learning for single cell assignment**
 
-* **scLearn** is a learning-based framework for single cell assignment. We applied scLearn to four main tasks of single cell assignment with different perspectives and annotation levels across 30 datasets and proved that scLearn outperforms all existing methods.
-* **scLearn** intuitively carrys out a search like scmap-cluster by measuring the similarity between query cells and each reference cluster centroid but with metric and similarity threshold learned from trained reference datasets. It consists of three steps: data preprocessing, model learning and assignment:
-  * **Data preprocessing**: Besides the routine normalization and quality control, scLearn removes rare cell types whose cell number are less than 10 from reference datasets. After the two steps above, scLearn performs feature selection with M3Drop which is based on dropout rate and has been proved suitable for single cell assignment.
-  * **Model learning**: scLearn builds a learning-based model. In this model, scLearn first randomly selects a part of samples from each class of the labeled reference with the information (similar or dissimilar) of these selected samples. By bootstrapping ten times, scLearn finally gets a stable classifier with learned metric specific to the trained rederence datasets.
-  * **Assignment**: With trained learning-based classifier, scLearn performs assignment for the query cells with learned metric and learned threshold.
+* **scLearn** is a learning-based framework to automatically infer the quantitative measurement/similarity, rather than manually designed, which is naturally fit to different single cell assignment tasks to obtain a general well performance on different single cell types. We evaluated scLearn on 30 public available benchmark datasets and indicated that scLearn outperforms the existing methods for single cell assignment from various aspects, proven to be the state-of-the-art for single cell assignment with a reliable and generalized single cell type identification and categorizing ability.
+* **scLearn** intuitively carrys out a search like scmap-cluster by measuring the similarity between query cells and each reference cluster centroid but with measurement and similarity thresholds learned from reference datasets. Basically, it consists of three steps: data preprocessing, measurement learning and cell assignment:
+  * **Data preprocessing**: Besides the routine normalization and quality control for singlec cell RNA-sequencing data, scLearn removes rare cell types whose cell number are less than 10 from reference datasets. Then, scLearn performs feature selection with M3Drop which is based on dropout rate that has been proved suitable for single cell assignment.
+  * **Measurement learning**: scLearn established a learning-based model to automatically learn the measurement used for cell assignment based on reference cell samples as the training data sources. In this model, scLearn first randomly selects a part of samples from each labeled classes with the sample similar or dissimilar information as the prior constrains. Then by applying the discriminative component analysis (DCA), an optimal measurement that naturally fits the relationship between these samples is learned with the prior sample similar or dissimilar information. The bootstrapping sampling technology is utilized in this step to reduce sampling imbalances and obtain a stable learning-based model. In addition, one threshold for all datasets and all cell types is not suitable. To this end, in this step scLearn learns the similarity thresholds for each cell types in each dataset instead of specifying the prior thresholds 
+  * **Cell assignment**: with the learned measurement and the learned threshold by the learning-based model, scLearn performs cell assignment for the query cells against the reference datasets.
   
 
 
@@ -28,10 +28,10 @@
     high_varGene_names <- Feature_selection_M3Drop(data_type_filtered$expression_profile)
     ```
     
-    * **model learning**:
+    * **Measurement learning**:
     ```
-    # training the classifier
-    scLearn_classifier_result<-scLearn_classifier(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information)
+    # training the model
+    scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information)
     ```
     
     * **Assignment**:
@@ -47,7 +47,7 @@
     data_type_filtered2<-data_qc_query
     
     # assignment with trained classifier
-    scLearn_predict_result<-scLearn_predict(scLearn_classifier_result,data_qc_query$expression_profile)
+    scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
 
