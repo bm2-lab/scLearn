@@ -75,7 +75,7 @@ Feature_selection_M3Drop<-function(expression_profile,log_normalized=TRUE,thresh
 }
 
 ### train the reference with dca
-scLearn_classifier<-function(high_varGene_names,expression_profile,sample_information,bootstrap_times=10,cutoff=0.01){
+scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_information,bootstrap_times=10,cutoff=0.01){
   Feature_cluster<-function(expression_profile,sample_information){
     sample_information<-sort(sample_information)
     expression_profile<-expression_profile[,names(sample_information)]
@@ -160,10 +160,10 @@ scLearn_classifier<-function(high_varGene_names,expression_profile,sample_inform
   feature_matrix_trans<-list()
   trans_matrix<-list()
   for(r in 1:bootstrap_times){
-    print(paste("Calculating",r))
+    print(paste("Bootstrapying",r))
     trans_result<-runDCA(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,strength = 0.1,seed=r)
     trans_matrix[[r]]<-trans_result$trans_matrix
-    thre_result_trans_cluster<-Threshold_similarity(trans_result$expression_profile_trans,trans_result$sample_information,cutoff=cutoff)
+    thre_result_trans_cluster<-Threshold_similarity(trans_result$expression_profile_trans,trans_result$sample_information,cutoff=cutoff,plot=F)
     threshold_cluster_trans[[r]]<-thre_result_trans_cluster$threshold
     feature_matrix_trans[[r]]<-Feature_cluster(trans_result$expression_profile_trans,trans_result$sample_information)
   }
@@ -265,7 +265,7 @@ correlation<-function(matrix,method=c("pearson","spearman","cosin","euclidean"),
 }
 
 ### predict cell type
-scLearn_predict<-function(scLearn_classifier_result,expression_profile_query,vote_rate=0.6,diff=0.05){
+scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profile_query,vote_rate=0.6,diff=0.05){
   Vote_class<-function(vec,vote_rate=0.6){
     vec_len<-length(vec)
     num<-length(table(vec)[table(vec)==max(table(vec))])
@@ -322,11 +322,11 @@ scLearn_predict<-function(scLearn_classifier_result,expression_profile_query,vot
     }
     return(result)
   }
-  expression_profile_query_hvg<-Get_query_hvg(expression_profile_query,scLearn_classifier_result$high_varGene_names)
+  expression_profile_query_hvg<-Get_query_hvg(expression_profile_query,scLearn_model_learning_result$high_varGene_names)
   predict_result<-matrix(0,ncol(expression_profile_query),10)
   for(r in 1:10){
-    expression_profile_query_hvg_ml<-scLearn_classifier_result$trans_matrix_learned[[r]] %*% expression_profile_query_hvg
-    assignment_result<-Assignment_result(expression_profile_query_hvg_ml,scLearn_classifier_result$feature_matrix_learned[[r]],threshold = scLearn_classifier_result$simi_threshold_learned[[r]],diff=diff)
+    expression_profile_query_hvg_ml<-scLearn_model_learning_result$trans_matrix_learned[[r]] %*% expression_profile_query_hvg
+    assignment_result<-Assignment_result(expression_profile_query_hvg_ml,scLearn_model_learning_result$feature_matrix_learned[[r]],threshold = scLearn_model_learning_result$simi_threshold_learned[[r]],diff=diff)
     predict_result[,r]<-assignment_result[,1]
   }
   predict_result_final<-apply(predict_result,1,Vote_class,vote_rate=vote_rate)

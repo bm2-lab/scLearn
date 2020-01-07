@@ -1,6 +1,6 @@
 Package: scLearn
 Type: Package
-Title: Learning to single cell assignment
+Title: Learning for single cell assignment
 Version: 1.0
 Date: 2019-12-13
 Author: Bin Duan
