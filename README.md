@@ -66,23 +66,23 @@
     | cortex_mouse_tasic.rds | Mouse cortex | 17 | Tasic |  |
     | embryo_stem_cells_mouse_klein.rds | Mouse embryo stem cells | 4 | Klein |  |
     | brain_mouse_zeisel.rds | Mouse brain | 9 | Zeisel |  |
-    | retina_mouse_shekhar_shallow_annotation.rds | Mouse retina | 4 | Shekhar |  |
-    | retina_mouse_shekhar_deep_annotation.rds | Mouse retina | 17 | Shekhar |  |
+    | retina_mouse_shekhar_coarse-grained_annotation.rds | Mouse retina | 4 | Shekhar |  |
+    | retina_mouse_shekhar_fine-grained_annotation.rds | Mouse retina | 17 | Shekhar |  |
     | retina_mouse_macosko.rds | Mouse retina | 12 | Macosko |  |
     | lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines | 5 | CellBench10X |  |
     | lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines | 5 | CellBenchCelSeq |  |
     | whole_mus_musculus_mouse_TM.rds | Whole Mus musculus | 55 | TM |  |
-    | primary_visual_cortex_mouse_AMB_shallow_annotation_3.rds | Primary mouse visual cortex | 3 | AMB |  |
-    | primary_visual_cortex_mouse_AMB_shallow_annotation_16.rds | Primary mouse visual cortex | 14 | AMB |  |
-    | primary_visual_cortex_mouse_AMB_shallow_annotation_92.rds | Primary mouse visual cortex | 68 | AMB |  |
+    | primary_visual_cortex_mouse_AMB_coarse-grained_annotation_3.rds | Primary mouse visual cortex | 3 | AMB |  |
+    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_14.rds | Primary mouse visual cortex | 14 | AMB |  |
+    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_92.rds | Primary mouse visual cortex | 68 | AMB |  |
     | PBMC_human_zheng_sorted.rds | FACS-sorted PBMC | 10 | Zheng sorted |  |
     | PBMC_human_zheng_68K.rds | PBMC | 11 | Zheng 68K |  |
-    | primary_visual_cortex_mouse_VISP_shallow_annotation.rds | Mouse primary visual cortex | 3 | VISP |  |
-    | primary_visual_cortex_mouse_VISP_deep_annotation.rds | Mouse primary visual cortex | 33 | VISP |  |
-    | anterior_lateral_motor_area_mouse_ALM_shallow_annotation.rds | Mouse anterior lateral motor area | 3 | ALM |  |
-    | anterior_lateral_motor_area_mouse_ALM_deep_annotation.rds | Mouse anterior lateral motor area | 32 | ALM |  |
-    | middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus | 3 | MTG |  |
-    | middle_temporal_gyrus_human_MTG_shallow_annotation.rds | Human middle temporal gyrus | 34 | MTG |  |
+    | primary_visual_cortex_mouse_VISP_coarse-grained_annotation.rds | Mouse primary visual cortex | 3 | VISP |  |
+    | primary_visual_cortex_mouse_VISP_fine-grained_annotation.rds | Mouse primary visual cortex | 33 | VISP |  |
+    | anterior_lateral_motor_area_mouse_ALM_coarse-grained_annotation.rds | Mouse anterior lateral motor area | 3 | ALM |  |
+    | anterior_lateral_motor_area_mouse_ALM_fine-grained_annotation.rds | Mouse anterior lateral motor area | 32 | ALM |  |
+    | middle_temporal_gyrus_human_MTG_coarse-grained_annotation.rds | Human middle temporal gyrus | 3 | MTG |  |
+    | middle_temporal_gyrus_human_MTG_fine-grained_annotation.rds | Human middle temporal gyrus | 34 | MTG |  |
     | PBMC_human_a10Xv2.rds | Human PBMC | 9 | PbmcBench pbmc1.10Xv2 |  |
     | PBMC_human_a10Xv3.rds | Human PBMC | 8 | PbmcBench pbmc1.10Xv3 |  |
     | PBMC_human_CL.rds | Human PBMC | 7 | PbmcBench pbmc1.CL |  |
@@ -114,7 +114,6 @@
     names(scLearn_model_learning_result$cell_type_information)
     ```
       13
-    
       'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 
       'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann' 
 
