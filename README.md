@@ -54,7 +54,7 @@
 
   * | Trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
     | :------: | :------: | :------: | :------: |
-    | pancreas_mouse_baron.rds | Mouse pancreas | 9 | Baron(Cell System, 2016) |
+    | pancreas_mouse_baron.rds | Mouse pancreas | 9 | [Baron(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
     | pancreas_human_baron.rds | Human pancreas | 13 | Baron(Cell System, 2016) |
     | pancreas_human_muraro.rds | Human pancreas | 8 | Muraro(Cell System, 2016) |
     | pancreas_human_segerstolpe.rds | Human pancreas | 8 | Segerstolpe(Cell Metabolism, 2016) |
