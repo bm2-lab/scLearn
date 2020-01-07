@@ -8,7 +8,7 @@
   
 
 
-* For illustration purpose, we took the dataset **data_example/baron-human.rds**. as an example.
+* For illustration purpose, we took the dataset **data_example/baron-human.rds** as an example.
     * **Install**: You can install the **scLearn** package from Github using **devtools** packages with **R>=3.6.1**.
     ```
     library(devtools)
