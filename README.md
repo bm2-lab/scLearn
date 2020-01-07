@@ -55,41 +55,41 @@
   * | Trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
     | :------: | :------: | :------: | :------: |
     | pancreas_mouse_baron.rds | Mouse pancreas | 9 | [Baron(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
-    | pancreas_human_baron.rds | Human pancreas | 13 | Baron(Cell System, 2016) |
-    | pancreas_human_muraro.rds | Human pancreas | 8 | Muraro(Cell System, 2016) |
-    | pancreas_human_segerstolpe.rds | Human pancreas | 8 | Segerstolpe(Cell Metabolism, 2016) |
-    | pancreas_human_xin.rds | Human pancreas | 4 | Xin(Cell Metabolism, 2016) |
-    | embryo_development_mouse_deng.rds | Mouse embryo development | 4 | Deng(Science, 2014) |
-    | cerebral_cortex_human_pollen.rds | Human cerebral cortex | 9 | Pollen(Nature biotechnology, 2014) |
-    | colorectal_tumor_human_li.rds | Human colorectal tumors | 5 | Li(Nature genetics, 2017) |
-    | brain_mouse_usoskin.rds | Mouse brain | 4 | Usoskin(Nature neuroscience,2015) |
-    | cortex_mouse_tasic.rds | Mouse cortex | 17 | Tasic(Nature neuroscience, 2016) |
-    | embryo_stem_cells_mouse_klein.rds | Mouse embryo stem cells | 4 | Klein(Cell, 2015) |
-    | brain_mouse_zeisel.rds | Mouse brain | 9 | Zeisel(Science, 2015) |
-    | retina_mouse_shekhar_coarse-grained_annotation.rds | Mouse retina | 4 | Shekhar(Cell, 2016) |
-    | retina_mouse_shekhar_fine-grained_annotation.rds | Mouse retina | 17 | Shekhar(Cell, 2016) |
-    | retina_mouse_macosko.rds | Mouse retina | 12 | Macosko(Cell, 2015) |
-    | lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines | 5 | CellBench10X(Nature methods, 2019) |
-    | lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines | 5 | CellBenchCelSeq(Nature methods, 2019) |
-    | whole_mus_musculus_mouse_TM.rds | Whole Mus musculus | 55 | TM(Nature, 2018) |
-    | primary_visual_cortex_mouse_AMB_coarse-grained_annotation_3.rds | Primary mouse visual cortex | 3 | AMB(Nature, 2018) |
-    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_14.rds | Primary mouse visual cortex | 14 | AMB(Nature, 2018) |
-    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_92.rds | Primary mouse visual cortex | 68 | AMB(Nature, 2018) |
-    | PBMC_human_zheng_sorted.rds | FACS-sorted PBMC | 10 | Zheng sorted(Nature communications ,2017) |
-    | PBMC_human_zheng_68K.rds | PBMC | 11 | Zheng 68K(Nature communications, 2017) |
-    | primary_visual_cortex_mouse_VISP_coarse-grained_annotation.rds | Mouse primary visual cortex | 3 | VISP(Nature, 2018) |
-    | primary_visual_cortex_mouse_VISP_fine-grained_annotation.rds | Mouse primary visual cortex | 33 | VISP(Nature, 2018) |
-    | anterior_lateral_motor_area_mouse_ALM_coarse-grained_annotation.rds | Mouse anterior lateral motor area | 3 | ALM(Nature, 2018) |
-    | anterior_lateral_motor_area_mouse_ALM_fine-grained_annotation.rds | Mouse anterior lateral motor area | 32 | ALM(Nature, 2018) |
-    | middle_temporal_gyrus_human_MTG_coarse-grained_annotation.rds | Human middle temporal gyrus | 3 | MTG(Nature, 2019) |
-    | middle_temporal_gyrus_human_MTG_fine-grained_annotation.rds | Human middle temporal gyrus | 34 | MTG(Nature, 2019) |
-    | PBMC_human_a10Xv2.rds | Human PBMC | 9 | PbmcBench pbmc1.10Xv2(bioRxiv, 2019) |
-    | PBMC_human_a10Xv3.rds | Human PBMC | 8 | PbmcBench pbmc1.10Xv3(bioRxiv, 2019) |
-    | PBMC_human_CL.rds | Human PBMC | 7 | PbmcBench pbmc1.CL(bioRxiv, 2019) |
-    | PBMC_human_DR.rds | Human PBMC | 9 | PbmcBench pbmc1.DR(bioRxiv, 2019) |
-    | PBMC_human_iD.rds | Human PBMC | 7 | PbmcBench pbmc1.iD(bioRxiv, 2019) |
-    | PBMC_human_SM2.rds | Human PBMC | 6 | PbmcBench pbmc1.SM2(bioRxiv, 2019) |
-    | PBMC_human_SW.rds | Human PBMC | 7 | PbmcBench pbmc1.SW(bioRxiv, 2019) |
+    | pancreas_human_baron.rds | Human pancreas | 13 | [Baron(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
+    | pancreas_human_muraro.rds | Human pancreas | 8 | [Muraro(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27693023) |
+    | pancreas_human_segerstolpe.rds | Human pancreas | 8 | [Segerstolpe(Cell Metabolism, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667667) |
+    | pancreas_human_xin.rds | Human pancreas | 4 | [Xin(Cell Metabolism, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667665) |
+    | embryo_development_mouse_deng.rds | Mouse embryo development | 4 | [Deng(Science, 2014)](https://www.ncbi.nlm.nih.gov/pubmed/24408435) |
+    | cerebral_cortex_human_pollen.rds | Human cerebral cortex | 9 | [Pollen(Nature biotechnology, 2014)](https://www.ncbi.nlm.nih.gov/pubmed/25086649) |
+    | colorectal_tumor_human_li.rds | Human colorectal tumors | 5 | [Li(Nature genetics, 2017)](https://www.ncbi.nlm.nih.gov/pubmed/28319088) |
+    | brain_mouse_usoskin.rds | Mouse brain | 4 | [Usoskin(Nature neuroscience,2015)](https://www.ncbi.nlm.nih.gov/pubmed/25420068) |
+    | cortex_mouse_tasic.rds | Mouse cortex | 17 | [Tasic(Nature neuroscience, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/26727548) |
+    | embryo_stem_cells_mouse_klein.rds | Mouse embryo stem cells | 4 | [Klein(Cell, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26000487) |
+    | brain_mouse_zeisel.rds | Mouse brain | 9 | [Zeisel(Science, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/25700174) |
+    | retina_mouse_shekhar_coarse-grained_annotation.rds | Mouse retina | 4 | [Shekhar(Cell, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27565351) |
+    | retina_mouse_shekhar_fine-grained_annotation.rds | Mouse retina | 17 | [Shekhar(Cell, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27565351) |
+    | retina_mouse_macosko.rds | Mouse retina | 12 | [Macosko(Cell, 2015)](https://www.ncbi.nlm.nih.gov/pubmed/26000488) |
+    | lung_cancer_cell_lines_human_cellbench10X.rds | Mixture of five human lung cancer cell lines | 5 | [CellBench10X(Nature methods, 2019)](https://www.ncbi.nlm.nih.gov/pubmed/31133762) |
+    | lung_cancer_cell_lines_human_cellbenchCelSeq.rds | Mixture of five human lung cancer cell lines | 5 | [CellBenchCelSeq(Nature methods, 2019)](https://www.ncbi.nlm.nih.gov/pubmed/31133762) |
+    | whole_mus_musculus_mouse_TM.rds | Whole Mus musculus | 55 | [TM(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30283141) |
+    | primary_visual_cortex_mouse_AMB_coarse-grained_annotation_3.rds | Primary mouse visual cortex | 3 | [AMB(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_14.rds | Primary mouse visual cortex | 14 | [AMB(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | primary_visual_cortex_mouse_AMB_fine-grained_annotation_92.rds | Primary mouse visual cortex | 68 | [AMB(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | PBMC_human_zheng_sorted.rds | FACS-sorted PBMC | 10 | [Zheng sorted(Nature communications ,2017)](https://www.ncbi.nlm.nih.gov/pubmed/28091601) |
+    | PBMC_human_zheng_68K.rds | PBMC | 11 | [Zheng 68K(Nature communications, 2017)](https://www.ncbi.nlm.nih.gov/pubmed/28091601) |
+    | primary_visual_cortex_mouse_VISP_coarse-grained_annotation.rds | Mouse primary visual cortex | 3 | [VISP(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | primary_visual_cortex_mouse_VISP_fine-grained_annotation.rds | Mouse primary visual cortex | 33 | [VISP(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | anterior_lateral_motor_area_mouse_ALM_coarse-grained_annotation.rds | Mouse anterior lateral motor area | 3 | [ALM(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | anterior_lateral_motor_area_mouse_ALM_fine-grained_annotation.rds | Mouse anterior lateral motor area | 32 | [ALM(Nature, 2018)](https://www.ncbi.nlm.nih.gov/pubmed/30382198) |
+    | middle_temporal_gyrus_human_MTG_coarse-grained_annotation.rds | Human middle temporal gyrus | 3 | [MTG(Nature, 2019)](https://www.ncbi.nlm.nih.gov/pubmed/31435019) |
+    | middle_temporal_gyrus_human_MTG_fine-grained_annotation.rds | Human middle temporal gyrus | 34 | [MTG(Nature, 2019)](https://www.ncbi.nlm.nih.gov/pubmed/31435019) |
+    | PBMC_human_a10Xv2.rds | Human PBMC | 9 | [PbmcBench pbmc1.10Xv2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_a10Xv3.rds | Human PBMC | 8 | [PbmcBench pbmc1.10Xv3(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_CL.rds | Human PBMC | 7 | [PbmcBench pbmc1.CL(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_DR.rds | Human PBMC | 9 | [PbmcBench pbmc1.DR(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_iD.rds | Human PBMC | 7 | [PbmcBench pbmc1.iD(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench pbmc1.SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench pbmc1.SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
 
   * **Cell Assignment with pre-trained models**:
     ```
