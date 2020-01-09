@@ -46,7 +46,6 @@
     ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(ann2)]
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
-    data_type_filtered2<-data_qc_query
     
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
@@ -103,7 +102,6 @@
     ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(ann2)]
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
-    data_type_filtered2<-data_qc_query
     ```
     ```
     # Assignment with pre-trained models
