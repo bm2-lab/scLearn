@@ -7,7 +7,7 @@ Author: Bin Duan
 Maintainer: Bin Duan <bioinfo_db@163.com>
 Description: scLearn is a learning-based framework for single cell assignment.
 License: GPL-2
-Depends: dml, SingleCellExperiment, M3Drop
+Depends: dml, SingleCellExperiment, M3Drop, R (>= 3.6.1)
 Keyword: single-cell assignment, learning-based
 
 
