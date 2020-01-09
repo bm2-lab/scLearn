@@ -28,10 +28,10 @@ DrawCluster(data, label = NULL, point_size = 1, method = c("tsne", "umap"), draw
   TRUE by default. If TRUE, the cluster label will be drawed in the corresponding place in the graph.
 }
   \item{calculated}{
-  TRUE by default. If FALSE, "tsne" or "umap" won't be performed, the graph will be draw with data offered directly.
+  TRUE by default. If FALSE, "tsne" or "umap" will not be performed, the graph will be draw with data offered directly.
 }
   \item{pca}{
-  TRUE by default. If FALSE, pca won't be performed.
+  TRUE by default. If FALSE, pca will not be performed.
 }
   \item{perplexity}{
   Default is 100.
