@@ -33,7 +33,7 @@
     * **Model learning**:
     ```
     # training the model
-    scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information)
+    scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,bootstrap_times=10)
     ```
     
     * **Cell assignment**:
