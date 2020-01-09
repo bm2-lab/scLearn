@@ -16,7 +16,7 @@ Cell_type_filter(expression_profile, sample_information, min_cell_number = 10)
   A dataframe showing the expression profile. The row is gene and The column is sample.
 }
   \item{sample_information}{
-  A character vector showing the cell type of each sample. The vector's column name is the sample name.
+  A character vector showing the cell type of each sample. The column name of the vector is the sample name.
 }
   \item{min_cell_number}{
   The minimal cell number to filter cell type. Default is 10.
