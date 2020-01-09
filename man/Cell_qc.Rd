@@ -16,7 +16,7 @@ Cell_qc(expression_profile, sample_information = NULL, species = "Hs", gene_low 
   A dataframe showing the expression profile. The row is gene and The column is sample.
 }
   \item{sample_information}{
-  A character vector showing the cell type of each sample. The vector's column name is the sample name.
+  A character vector showing the cell type of each sample. The column name of the vector is the sample name.
 }
   \item{species}{
   The species the cells belong to. Currently species="Hs" for homo sapiens or species="Mm" for mus musculus are available. It is used to detect mitochondrial genes, so species doesn't matter if data won't be considered the percentage of mitochondrial genes.
@@ -37,7 +37,7 @@ Cell_qc(expression_profile, sample_information = NULL, species = "Hs", gene_low 
   The maximun number of unique molecular identifier induced (default Inf)
 }
   \item{logNormalize}{
-  TRUE by default. If FALSE, the data won't be performed log normalized.
+  TRUE by default. If FALSE, the data will not be performed log normalized.
 }
   \item{plot}{
   FALSE by default. If TRUE, plot the graph.
