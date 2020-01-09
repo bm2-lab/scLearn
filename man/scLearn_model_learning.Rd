@@ -19,10 +19,10 @@ scLearn_model_learning(high_varGene_names, expression_profile, sample_informatio
   A dataframe showing the reference expression profile. The row is gene and The column is sample.
 }
   \item{sample_information}{
-  A character vector showing the cell type of each sample. The vector's column name is the sample name.
+  A character vector showing the cell type of each sample. The column name of the vector is the sample name.
 }
   \item{bootstrap_times}{
-  The times for bootstrapping. Default is 10.
+  The times for bootstrapping which should be at least larger than 1. Default is 10.
 }
   \item{cutoff}{
   The cutoff for selecting similarity threshold for each cell type. Default is 0.01.
