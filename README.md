@@ -48,7 +48,7 @@
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
     
     # Assignment with trained model above
-    scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
+    scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
 * **Trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered the whole trained models for the 30 datasets used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each trained scLearn models is shown below:
@@ -120,7 +120,7 @@
 
     ```
     # Predict the cell types
-    scLearn_predict_result<-scLearn_predict(scLearn_model_learning_result,data_qc_query$expression_profile)
+    scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
     
