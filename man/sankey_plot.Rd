@@ -16,7 +16,7 @@ sankey_plot(predict_result, sample_information_reference, plot = FALSE)
   A data frame showing the predicted result from function "scLearn_predict".
 }
   \item{sample_information_reference}{
-  A character vector showing the cell type of each reference sample. The vector's column name is the sample name.
+  A character vector showing the cell type of each reference sample. The column name of the vector is the sample name.
 }
   \item{plot}{
   FALSE by default. If TRUE, plot the graph.
