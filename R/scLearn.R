@@ -159,6 +159,9 @@ scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_in
   threshold_cluster_trans<-list()
   feature_matrix_trans<-list()
   trans_matrix<-list()
+  if(bootstrap_times<2){
+    warning("The bootstrap_times should be at least larger than 1.")
+  }
   for(r in 1:bootstrap_times){
     print(paste("Bootstrapying",r))
     trans_result<-runDCA(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,strength = 0.1,seed=r)
