@@ -323,8 +323,8 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
     return(result)
   }
   expression_profile_query_hvg<-Get_query_hvg(expression_profile_query,scLearn_model_learning_result$high_varGene_names)
-  predict_result<-matrix(0,ncol(expression_profile_query),10)
-  for(r in 1:10){
+  predict_result<-matrix(0,ncol(expression_profile_query),length(scLearn_model_learning_result$trans_matrix_learned))
+  for(r in 1:length(scLearn_model_learning_result$trans_matrix_learned)){
     expression_profile_query_hvg_ml<-scLearn_model_learning_result$trans_matrix_learned[[r]] %*% expression_profile_query_hvg
     assignment_result<-Assignment_result(expression_profile_query_hvg_ml,scLearn_model_learning_result$feature_matrix_learned[[r]],threshold = scLearn_model_learning_result$simi_threshold_learned[[r]],diff=diff)
     predict_result[,r]<-assignment_result[,1]
@@ -333,7 +333,8 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
   predict_result_final<-as.data.frame(predict_result_final)
   predict_result_final$sample<-colnames(expression_profile_query)
   predict_result_final$predict_result_final<-as.character(predict_result_final$predict_result_final)
-  colnames(predict_result_final)<-c("predict_cell_type","sample_name")
+  colnames(predict_result_final)<-c("Predict_cell_type","Query_cell_id")
+  predict_result_final<-predict_result_final[,c("Query_cell_id","Predict_cell_type")]
   return(predict_result_final)
 }
 
