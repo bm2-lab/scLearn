@@ -12,12 +12,12 @@
 
 * For illustration purpose, we took the dataset **data_example/baron-human.rds** as an example.
     * **Install**: You can install the **scLearn** package from Github using **devtools** packages with **R>=3.6.1**.
-    ```
+    ```r
     library(devtools)
     install_github("bm2-lab/scLearn")
     ```
     * **Data preprocessing**:
-    ```
+    ```r
     # loading the reference dataset
     data<-readRDS('example_data/baron-human.rds')
     rawcounts=assays(data)[[1]]
@@ -31,13 +31,13 @@
     ```
     
     * **Model learning**:
-    ```
+    ```r
     # training the model
     scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,bootstrap_times=10)
     ```
     
     * **Cell assignment**:
-    ```
+    ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
     rawcounts2=assays(data2)[[1]]
@@ -93,7 +93,7 @@
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench pbmc1.SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
 
   * **Cell Assignment with pre-trained models**:
-    ```
+    ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
     rawcounts2=assays(data2)[[1]]
@@ -103,21 +103,20 @@
     rawcounts2<-rawcounts2[,names(ann2)]
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
     ```
-    ```
+    ```r
     # Assignment with pre-trained models
     # Take pancreas_human_baron.rds as example
     scLearn_model_learning_result<-readRDS("Trained_models/pancreas_human_baron.rds")
     ```
-    ```
+    ```r
     # Check the cell types in this reference
     length(scLearn_model_learning_result$cell_type_information)
     names(scLearn_model_learning_result$cell_type_information)
     ```
-      13
-      
-      'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 
-      'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann' 
-
+    ```
+    13
+    'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann'
+    ```
     ```
     # Predict the cell types
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
