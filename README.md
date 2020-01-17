@@ -111,8 +111,8 @@
     names(scLearn_model_learning_result$cell_type_information)
     ```
     ```
-    13
-    'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann'
+    ##13
+    ##'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann'
     ```
     ```
     # Predict the cell types
