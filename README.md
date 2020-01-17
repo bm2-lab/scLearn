@@ -23,7 +23,6 @@
     rawcounts=assays(data)[[1]]
     ann<-as.character(data$cell_type1)
     names(ann)<-colnames(data)
-    
     # cell quality control and rare cell type filtered and feature selection
     data_qc<-Cell_qc(rawcounts,ann,species="Hs")
     data_type_filtered<-Cell_type_filter(data_qc$expression_profile,data_qc$sample_information,min_cell_number = 10)
@@ -33,7 +32,7 @@
     * **Model learning**:
     ```r
     # training the model
-    scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,bootstrap_times=10)
+  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,bootstrap_times=10)
     ```
     
     * **Cell assignment**:
@@ -46,7 +45,6 @@
     ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(ann2)]
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
-    
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
@@ -102,8 +100,7 @@
     ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(ann2)]
     data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
-    ```
-    ```r
+    
     # Assignment with pre-trained models
     # Take pancreas_human_baron.rds as example
     scLearn_model_learning_result<-readRDS("Trained_models/pancreas_human_baron.rds")
