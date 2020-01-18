@@ -89,6 +89,31 @@
     | PBMC_human_iD.rds | Human PBMC | 7 | [PbmcBench pbmc1.iD(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench pbmc1.SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench pbmc1.SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
+    
+  * **[The trained models for 20 mouse organs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6642641/)**
+    | Trained model names | Description | No. of cell types |
+    | :------: | :------: | :------: |
+    | Aorta_mouse_FACS.rds | Mouse aorta | 4 |
+    | Bladder_mouse_FACS.rds | Mouse bladder | 2 |
+    | Brain_Myeloid_mouse_FACS.rds | Mouse brain myeloid | 2 |
+    | Brain_Non-Myeloid_mouse_FACS.rds | Mouse brain non-myeloid | 7 |
+    | Diaphragm_mouse_FACS.rds | Mouse diaphragm | 5 |
+    | Fat_mouse_FACS.rds | Mouse fat | 6 |
+    | Heart_mouse_FACS.rds | Mouse heart | 10 |
+    | Kidney_mouse_FACS.rds | Mouse kidney | 5 |
+    | Large_Intestine_mouse_FACS.rds | Mouse large intestine | 5 |
+    | Limb_Muscle_mouse_FACS.rds | Mouse limb muscle | 8 |
+    | Liver_mouse_FACS.rds | Mouse liver | 5 |
+    | Lung_mouse_FACS.rds | Mouse lung | 11 |
+    | Mammary_Gland_mouse_FACS.rds | Mouse mammary gland | 4 |
+    | Marrow_mouse_FACS.rds | Mouse marrow | 21 |
+    | Pancreas_mouse_FACS.rds | Mouse pancreas | 9 |
+    | Skin_mouse_FACS.rds | Mouse skin | 5 |
+    | Spleen_mouse_FACS.rds | Mouse spleen | 3 |
+    | Thymus_mouse_FACS.rds | Mouse thymus | 3 |
+    | Tongue_mouse_FACS.rds | Mouse tongue | 2 |
+    | Trachea_mouse_FACS.rds | Mouse trachea | 4 |
+  
 
   * **Cell Assignment with pre-trained models**:
     ```r
