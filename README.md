@@ -90,7 +90,8 @@
     | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench pbmc1.SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench pbmc1.SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     
-  * **[The trained models for 20 mouse organs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6642641/)**
+  * **The trained models for [20 mouse organs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6642641/)**
+  
     | Trained model names | Description | No. of cell types |
     | :------: | :------: | :------: |
     | Aorta_mouse_FACS.rds | Mouse aorta | 4 |
