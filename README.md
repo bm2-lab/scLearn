@@ -26,18 +26,18 @@
     # loading the reference dataset
     data<-readRDS('example_data/baron-human.rds')
     rawcounts=assays(data)[[1]]
-    ann<-as.character(data$cell_type1)
-    names(ann)<-colnames(data)
+    refe_ann<-as.character(data$cell_type1)
+    names(refe_ann)<-colnames(data)
     # cell quality control and rare cell type filtered and feature selection
-    data_qc<-Cell_qc(rawcounts,ann,species="Hs")
-    data_type_filtered<-Cell_type_filter(data_qc$expression_profile,data_qc$sample_information,min_cell_number = 10)
+    data_qc<-Cell_qc(rawcounts,refe_ann,species="Hs")
+    data_type_filtered<-Cell_type_filter(data_qc$expression_profile,data_qc$sample_information_cellType,min_cell_number = 10)
     high_varGene_names <- Feature_selection_M3Drop(data_type_filtered$expression_profile)
     ```
     
     * **Model learning**:
     ```r
     # training the model
-  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information,bootstrap_times=10)
+  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,bootstrap_times=10)
     ```
     
     * **Cell assignment**:
@@ -45,11 +45,11 @@
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
     rawcounts2=assays(data2)[[1]]
-    ann2<-as.character(data2$cell_type1)
-    names(ann2)<-colnames(data2)
-    ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
-    rawcounts2<-rawcounts2[,names(ann2)]
-    data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
+    query_ann<-as.character(data2$cell_type1)
+    names(query_ann)<-colnames(data2)
+    query_ann<-query_ann[ann2 %in% c("alpha","beta","delta","gamma")]
+    rawcounts2<-rawcounts2[,names(query_ann)]
+    data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
