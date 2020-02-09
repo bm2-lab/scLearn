@@ -25,7 +25,7 @@
     ```r
     # loading the reference dataset
     data<-readRDS('example_data/baron-human.rds')
-    rawcounts=assays(data)[[1]]
+    rawcounts<-assays(data)[[1]]
     refe_ann<-as.character(data$cell_type1)
     names(refe_ann)<-colnames(data)
     # cell quality control and rare cell type filtered and feature selection
@@ -44,7 +44,7 @@
     ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
-    rawcounts2=assays(data2)[[1]]
+    rawcounts2<-assays(data2)[[1]]
     query_ann<-as.character(data2$cell_type1)
     names(query_ann)<-colnames(data2)
     query_ann<-query_ann[ann2 %in% c("alpha","beta","delta","gamma")]
@@ -60,7 +60,7 @@
     ```r
     # loading the reference dataset
     data<-readRDS('example_data/ESC.rds')
-    rawcounts=assays(data)[[1]]
+    rawcounts<-assays(data)[[1]]
     refe_ann1<-as.character(data$cell_type1)
     names(refe_ann1)<-colnames(data)
     refe_ann2<-as.character(data$cell_type2)
@@ -80,7 +80,7 @@
     ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/ESC.rds')
-    rawcounts2=assays(data2)[[1]]
+    rawcounts2<-assays(data2)[[1]]
     query_ann1<-as.character(data2$cell_type1)
     names(query_ann1)<-colnames(data2)
     query_ann2<-as.character(data2$cell_type2)
@@ -162,7 +162,7 @@
     ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
-    rawcounts2=assays(data2)[[1]]
+    rawcounts2<-assays(data2)[[1]]
     ann2<-as.character(data2$cell_type1)
     names(ann2)<-colnames(data2)
     ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
