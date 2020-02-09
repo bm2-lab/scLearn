@@ -8,15 +8,18 @@ Quality control for single cell transcriptome.
 scLearn evaluates the cell quality by three factors, i.e. the number of genes detected (default 500 to 10000), the number of unique molecular identifier induced (default above 1500), and the percentage of mitochondrial genes detected (default below 10\% among all the detected genes). Only cells satified the whole three factors are retained.
 }
 \usage{
-Cell_qc(expression_profile, sample_information = NULL, species = "Hs", gene_low = 500, gene_high = 10000, mito_high = 0.1, umi_low = 1500, umi_high = Inf, logNormalize = TRUE, plot = FALSE, plot_path = "./quality_control.pdf")
+Cell_qc(expression_profile, sample_information_cellType,sample_information_timePoint = NULL, species = "Hs", gene_low = 500, gene_high = 10000, mito_high = 0.1, umi_low = 1500, umi_high = Inf, logNormalize = TRUE, plot = FALSE, plot_path = "./quality_control.pdf")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{expression_profile}{
   A dataframe showing the expression profile. The row is gene and The column is sample.
 }
-  \item{sample_information}{
+  \item{sample_information_cellType}{
   A character vector showing the cell type of each sample. The column name of the vector is the sample name.
+}
+  \item{sample_information_timePoint}{
+  A character vector showing the time point of each sample. The column name of the vector is the sample name. The default is NULL.
 }
   \item{species}{
   The species the cells belong to. Currently species="Hs" for homo sapiens or species="Mm" for mus musculus are available. It is used to detect mitochondrial genes, so species doesn't matter if data won't be considered the percentage of mitochondrial genes.
@@ -51,7 +54,8 @@ Cell_qc(expression_profile, sample_information = NULL, species = "Hs", gene_low 
 }
 \value{
 \item{expression_profile}{A dataframe showing expression profile after quality control.}
-\item{sample_information}{A character vector showing the cell type of each sample after quality contro.}
+\item{sample_information_cellType}{A character vector showing the cell type of each sample after quality control.}
+\item{sample_information_timePoint}{A character vector showing the time point of each sample after quality control if "sample_information_timePoint" is not NULL. }
 }
 \author{
 Bin Duan
