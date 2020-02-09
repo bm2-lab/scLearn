@@ -79,7 +79,7 @@ scLearn is developed as a R package, built in with a comprehensive human and mam
     # training the model
   scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,data_type_filtered$sample_information_timePoint,dim_para=0.999)
     ```
-    * **Cell assignment**: Because there is no another corresponding datasets for cell assignment, we use 'example_data/ESC.rds' itself.
+    * **Cell assignment**: We just use 'example_data/ESC.rds' itself to test the multi-label single cell assignment here.
     ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/ESC.rds')
