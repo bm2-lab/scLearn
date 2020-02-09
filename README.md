@@ -92,7 +92,8 @@
 ### **Trained scLearn models**
 * **Trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered the whole trained models for the 30 datasets used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each trained scLearn models is shown below:
 
-  * | Trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
+  * **The information of trained scLearn models**
+    | Trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
     | :------: | :------: | :------: | :------: |
     | pancreas_mouse_baron.rds | Mouse pancreas | 9 | [Baron(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
     | pancreas_human_baron.rds | Human pancreas | 13 | [Baron(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
