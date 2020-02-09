@@ -161,7 +161,7 @@ scLearn is developed as a R package, built in with a comprehensive human and mam
     | Trachea_mouse_FACS.rds | Mouse trachea | 4 |
   
 
-  * **Cell Assignment with pre-trained models**:
+  * **Cell assignment with pre-trained models**:
     ```r
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
