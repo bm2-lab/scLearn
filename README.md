@@ -1,7 +1,8 @@
 # **scLearn: Learning for single cell assignment**
 
+## **Introduction**
 * **scLearn** is a learning-based framework that automatically infers quantitative measurement/similarity that can be used for different single cell assignment tasks, achieving a well-generalized performance on different single cell types. We evaluated scLearn on 30 publicly available benchmark datasets and proved that scLearn outperformed the existing methods for single cell assignment from various aspects, demonstrating state-of-the-art effectiveness with reliable and generalized single cell type identification and categorizing ability. Furthermore, for the first time, a multi-label single cell assignment strategy is proposed, and sclearn is extended to assign single cell to proper time point as well as cell type simultaneously, proven to be effective for cell development and lineage analysis with additional temporal information. scLearn is developed as a R package, built in with a comprehensive human and mammalian single cell reference datasets and pre-trained models, which can be utilized directly to facilitate a broad applications of single cell assignment.
-* **scLearn** a learning-based framework designed to intuitively carry out a cell search by measuring the similarity between query cells and each reference cell cluster centroid utilizing measurement and similarity thresholds learned from reference datasets, rather than manually designing the measurement/similarity or empirically selecting the threshold. Basically, scLearn comprises three main steps (Fig. 1 and Online Methods): data preprocessing, model learning, and cell assignment:
+* **scLearn** a learning-based framework designed to intuitively carry out a cell search by measuring the similarity between query cells and each reference cell cluster centroid utilizing measurement and similarity thresholds learned from reference datasets, rather than manually designing the measurement/similarity or empirically selecting the threshold. Basically, scLearn comprises three main steps: data preprocessing, model learning, and cell assignment:
   * **Data preprocessing**: First, a routine normalization and quality control for single cell RNA-sequencing data is performed. scLearn removes the rare cell types whose cell numbers are less than 10 from the reference datasets. Then, scLearn performs feature selection utilizing M3Drop, which is based on a specific dropout rate that has proven suitable for single cell assignment.
   * **Model learning**: scLearn establishes a learning-based model to automatically learn the measurement used for cell assignment based on reference cells. In this model, the identification of query cell type is formulated as a single-label single cell assignment. Discriminative component analysis (DCA) is applied and a transformation matrix that can be applied to formulate an optimal measurement that naturally fits the relationship between these samples is learned on the basis of the prior sample similarity or dissimilarity. In addition, the assignment of query cell into proper time point and cell type simultaneously is formulated as a multi-label single cell assignment. In this case, scLearn extended the DCA-based matrix transformation to a multi-label dimension reduction by maximizing the dependence between the original feature space and the associated labels (multi-label dimension reduction via dependence maximization, MDDM). For either case, the derived transformation matrix can be multiplied by the original reference data matrix and the query data matrix, respectively, and the learned measurement can be obtained on the basis of the distance/similarity between the transformed data samples. For single-label single cell assignment, bootstrapping sampling technology is also utilized in this step to reduce sampling imbalances and to obtain a stable learning-based model. It should be noted that single cell assignment methods must support the rejection task, while all existing single cell assignment strategies have adopted an empirical similarity threshold, such as a Pearson correlation coefficient of 0.7 or Cosine similarity of 0.57, which should differ among distinct datasets with different cell types and annotations. In general, the similarity thresholds of datasets with fine-grained annotation (deep annotation, i.e., cells are categorized in a fine-grained manner), should be larger than those of datasets with coarse-grained annotation (shallow annotation, i.e., cells are categorized in a coarse-grained manner), because the cells in the former datasets are more similar than the cells in the latter datasets. Therefore, one threshold for all datasets and all cell types is not suitable. To this end, in this step, scLearn learns the similarity thresholds for each cell type in each dataset instead of specifying a priori thresholds.
   * **Cell assignment**: Finally, according to the learned measurement and the learned threshold obtained with the learning-based model, scLearn assigns the cell type of the query cells by comparison with the reference datasets.
@@ -10,12 +11,16 @@
 ![](example_data/Figure_1.jpg)<!-- -->
   **scLearn** comprises three steps: data preprocessing, model learning, and cell assignment. (1) In the first step, the main processes comprise routine normalization, cell quality control, rare cell-type filtering, and feature selection; nGene, number of genes; nUMI, number of unique molecular identifiers; P-mitGene, percentage of mitochondrial genes; and G, cell group. (2) In the second step, for single-label single cell assignment, DCA is applied to learn the transformation matrix; For multi-label single cell assignment, MDDM is applied to learn the transformation matrix. Then, with the learned transformation matrix, the transformed reference cell samples are obtained for the following assignment. Also, the similarity thresholds for labeling a cell as “unassigned” for each cell type are also automatically learned. G, cell group; DCA, discriminative component analysis. LTM, Learned Transformation Matrix, which can be calculated by equation 3 for single-label single cell assignment or equation 9 for multi-label single cell assignment, respectively; and TRCM, Transformed Reference Cell Matrix, which can be calculated by equation 4. (3) In the third step, the transformed query cell samples are obtained based on LTM with an available optional cell quality control procedure. The transformed query samples are compared against the transformed reference cell matrix to derive the measurement fulfilling the cell-type assignment with the rejection task. TQCM, Transformed Query Cell Matrix, which can be calculated by equation 5.
 
-* For illustration purpose, we took the dataset **data_example/baron-human.rds** as an example.
-    * **Install**: You can install the **scLearn** package from Github using **devtools** packages with **R>=3.6.1**.
+## **Install**
+* **Install**: You can install the **scLearn** package from Github using **devtools** packages with **R>=3.6.1**.
+
     ```r
     library(devtools)
     install_github("bm2-lab/scLearn")
     ```
+## **Tutorial**
+### **Single-label single cell assignment**
+* For illustration purpose, we took the dataset **data_example/baron-human.rds** as an example. 
     * **Data preprocessing**:
     ```r
     # loading the reference dataset
@@ -49,6 +54,42 @@
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
+### **Multi-label single cell assignment**
+* For illustration purpose, we took the dataset **data_example/ESC.rds** as an example. 
+    * **Data preprocessing**:
+    ```r
+    # loading the reference dataset
+    data<-readRDS('example_data/ESC.rds')
+    rawcounts=assays(data)[[1]]
+    refe_ann1<-as.character(data$cell_type1)
+    names(refe_ann1)<-colnames(data)
+    refe_ann2<-as.character(data$cell_type2)
+    names(refe_ann2)<-colnames(data)
+    # cell quality control and rare cell type filtered and feature selection
+    data_qc<-Cell_qc(rawcounts,refe_ann1,refe_ann2,species="Hs")
+    data_type_filtered<-Cell_type_filter(data_qc$expression_profile,data_qc$sample_information_cellType,data_qc$sample_information_timePoint,min_cell_number = 10)
+    high_varGene_names <- Feature_selection_M3Drop(data_type_filtered$expression_profile)
+    ```
+    
+    * **Model learning**:
+    ```r
+    # training the model
+  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,data_type_filtered$sample_information_timePoint,dim_para=0.999)
+    ```
+    * **Cell assignment**: Because there is no another corresponding datasets for cell assignment, we use 'example_data/ESC.rds' itself.
+    ```r
+    # loading the quary cell and performing cell quality control
+    data2<-readRDS('example_data/ESC.rds')
+    rawcounts2=assays(data2)[[1]]
+    query_ann1<-as.character(data2$cell_type1)
+    names(query_ann1)<-colnames(data2)
+    query_ann2<-as.character(data2$cell_type2)
+    names(query_ann2)<-colnames(data2)
+    rawcounts2<-rawcounts2[,names(query_ann1)]
+    data_qc_query<-Cell_qc(rawcounts2,query_ann1,query_ann2,species="Hs")
+    # Assignment with trained model above
+    scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
+### **Trained scLearn models**
 * **Trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered the whole trained models for the 30 datasets used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each trained scLearn models is shown below:
 
   * | Trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
