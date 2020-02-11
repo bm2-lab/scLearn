@@ -172,11 +172,11 @@ scLearn is developed as a R package, built in with a comprehensive human and mam
     # loading the quary cell and performing cell quality control
     data2<-readRDS('example_data/xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
-    ann2<-as.character(data2$cell_type1)
-    names(ann2)<-colnames(data2)
-    ann2<-ann2[ann2 %in% c("alpha","beta","delta","gamma")]
-    rawcounts2<-rawcounts2[,names(ann2)]
-    data_qc_query<-Cell_qc(rawcounts2,ann2,species="Hs")
+    query_ann<-as.character(data2$cell_type1)
+    names(query_ann)<-colnames(data2)
+    query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
+    rawcounts2<-rawcounts2[,names(query_ann)]
+    data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
     
     # Assignment with pre-trained models
     # Take pancreas_human_baron.rds as example
