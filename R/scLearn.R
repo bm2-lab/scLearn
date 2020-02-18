@@ -60,8 +60,9 @@ Cell_type_filter<-function(expression_profile,sample_information_cellType,sample
   }else{
     sample_information<-paste(sample_information_cellType,sample_information_timePoint,sep="_")
   }
+  names(sample_information)<-names(sample_information_cellType)
   cell_number_type<-table(sample_information)
-  cell_type_filtered<-names(cell_number_type[cell_number_type]<min_cell_number)
+  cell_type_filtered<-names(cell_number_type[cell_number_type<min_cell_number])
   sample_information_filtered<-sample_information[!(sample_information %in% cell_type_filtered)]
   expression_profile_filtered<-expression_profile[,names(sample_information_filtered)]
   sample_information_cellType<-sample_information_cellType[names(sample_information_filtered)]
