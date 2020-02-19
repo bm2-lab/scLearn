@@ -179,7 +179,7 @@ scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_in
     }
     for(r in 1:bootstrap_times){
       print(paste("Bootstrapying",r))
-      trans_result<-runDCA(high_varGene_names,expression_profile,sample_information,strength = 0.1,seed=r)
+      trans_result<-runDCA(high_varGene_names,expression_profile,sample_information_cellType,strength = 0.1,seed=r)
       trans_matrix[[r]]<-trans_result$trans_matrix
       thre_result_trans_cluster<-Threshold_similarity(trans_result$expression_profile_trans,trans_result$sample_information,cutoff=cutoff)
       threshold_cluster_trans[[r]]<-thre_result_trans_cluster$threshold
