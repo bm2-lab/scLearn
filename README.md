@@ -56,7 +56,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     rawcounts2<-assays(data2)[[1]]
     query_ann<-as.character(data2$cell_type1)
     names(query_ann)<-colnames(data2)
-    query_ann<-query_ann[ann2 %in% c("alpha","beta","delta","gamma")]
+    query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(query_ann)]
     data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
     # Assignment with trained model above
