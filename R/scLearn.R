@@ -90,6 +90,9 @@ Feature_selection_M3Drop<-function(expression_profile,log_normalized=TRUE,thresh
 
 ### train the reference 
 scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_information_cellType,sample_information_timePoint=NULL,bootstrap_times=10,cutoff=0.01,dim_para=0.999){
+  qiu_ji<-function(x,y){
+        return(x %*% y)
+    }
   Feature_cluster<-function(expression_profile,sample_information){
     sample_information<-sort(sample_information)
     expression_profile<-expression_profile[,names(sample_information)]
@@ -194,18 +197,18 @@ scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_in
     
     colnames(label_matrix)<-colnames(expression_profile)
     
-    for (i in 1:ncol(label_matrix)){
-      label_matrix[c(sample_information_cellType[colnames(label_matrix)[i]],sample_information_timePoint[colnames(label_matrix)[i]]),i]<-1
+    sample_information_all<-c(sample_information_cellType,sample_information_timePoint)
+    label_all<-c(names(table(sample_information_cellType)),names(table(sample_information_timePoint)))
+    for (i in 1:nrow(label_matrix)) {
+        label_matrix[i,names(sample_information_all[sample_information_all==label_all[i]])] <- 1
     }
     
     L_kernel<-matrix(0,ncol(label_matrix),ncol(label_matrix))
     colnames(L_kernel)<-colnames(expression_profile)
     row.names(L_kernel)<-colnames(expression_profile)
     
-    for(i in 1:ncol(label_matrix)){
-      for(j in 1:ncol(label_matrix)){
-        L_kernel[i,j]<-label_matrix[,i] %*% label_matrix[,j]
-      }
+    for(i in 1:nrow(L_kernel)){
+        L_kernel[i,]<-apply(label_matrix,2,qiu_ji,y=label_matrix[,i])
     }
     getProperDim<-function(lambda,dim_para=0.999){
         thr<-dim_para
