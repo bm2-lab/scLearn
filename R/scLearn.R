@@ -389,6 +389,7 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
     return(expression_profile_hvg)
   }
   Assignment_result<-function(expression_profile_query_hvg,feature_matrix,threshold,diff=0.05){
+    options(warn=-1)
     feature_matrix<-t(feature_matrix)
     result<-data.frame(cluster_lab=1:ncol(expression_profile_query_hvg),cluster_cor=rep(0,ncol(expression_profile_query_hvg)))
     row.names(result)<-colnames(expression_profile_query_hvg)
@@ -396,7 +397,11 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
       cor_result<-rep(0,ncol(feature_matrix))
       names(cor_result)<-colnames(feature_matrix)
       for(j in 1:ncol(feature_matrix)){
-        cor_result[j]<-cor(expression_profile_query_hvg[,i],feature_matrix[,j])
+        if(is.na(cor(expression_profile_query_hvg[,i],feature_matrix[,j]))){
+          cor_result[j]<-0
+        }else{
+          cor_result[j]<-cor(expression_profile_query_hvg[,i],feature_matrix[,j])
+          }
       }
       cor_compare<-cor_result-threshold 
       if(length(cor_compare[cor_compare>0])==0){
