@@ -206,10 +206,7 @@ scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_in
     L_kernel<-matrix(0,ncol(label_matrix),ncol(label_matrix))
     colnames(L_kernel)<-colnames(expression_profile)
     row.names(L_kernel)<-colnames(expression_profile)
-    
-    for(i in 1:nrow(L_kernel)){
-        L_kernel[i,]<-apply(label_matrix,2,qiu_ji,y=label_matrix[,i])
-    }
+    L_kernel<-t(label_matrix) %*% label_matrix
     getProperDim<-function(lambda,dim_para=0.999){
         thr<-dim_para
         sum_lambda<-sum(lambda)
@@ -391,7 +388,7 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
   Assignment_result<-function(expression_profile_query_hvg,feature_matrix,threshold,diff=0.05){
     options(warn=-1)
     feature_matrix<-t(feature_matrix)
-    result<-data.frame(cluster_lab=1:ncol(expression_profile_query_hvg),cluster_cor=rep(0,ncol(expression_profile_query_hvg)))
+    result<-data.frame(cluster_lab=1:ncol(expression_profile_query_hvg),unassigned_case=rep(NA,ncol(expression_profile_query_hvg)),cluster_cor=rep(0,ncol(expression_profile_query_hvg)))
     row.names(result)<-colnames(expression_profile_query_hvg)
     for(i in 1:ncol(expression_profile_query_hvg)){
       cor_result<-rep(0,ncol(feature_matrix))
@@ -406,19 +403,21 @@ scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profi
       cor_compare<-cor_result-threshold 
       if(length(cor_compare[cor_compare>0])==0){
         result[i,1]<-"unassigned"
-        result[i,2]<-NA      
+        result[i,2]<-"Dissimilar to all reference cell types"
+        result[i,3]<-NA
       }
       if(length(cor_compare[cor_compare>0])==1){
-        result[i,1]<-names(cor_compare[cor_compare>0]) 
-        result[i,2]<-cor_result[result[i,1]]
+        result[i,1]<-names(cor_compare[cor_compare>0])
+        result[i,3]<-cor_result[result[i,1]]
       }
       if(length(cor_compare[cor_compare>0])>=2){
         if(sort(cor_result[names(cor_compare[cor_compare>0])],decreasing=T)[1]-sort(cor_result[names(cor_compare[cor_compare>0])],decreasing=T)[2]>=diff){
           result[i,1]<-names(cor_result[names(cor_compare[cor_compare>0])])[which(cor_result[names(cor_compare[cor_compare>0])]==max(cor_result[names(cor_compare[cor_compare>0])]))][1]
-          result[i,2]<-cor_result[result[i,1]]            
+          result[i,3]<-cor_result[result[i,1]]            
         }else{
           result[i,1]<-"unassigned"
-          result[i,2]<-NA      
+          result[i,2]<-"Similar to multiple existing labels"
+          result[i,3]<-NA
         }
       }
     }
