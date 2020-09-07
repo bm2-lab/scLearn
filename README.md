@@ -27,7 +27,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     ```
 ## **Tutorial**
 ### **Single-label single cell assignment**
-* For illustration purpose, we took the dataset **[baron-human.rds](https://www.jianguoyun.com/p/DYwo-WUQwdXjCBiJpbsD)** as an example. 
+* For illustration purpose, we took the dataset **[baron-human.rds](https://www.jianguoyun.com/p/DYwo-WUQwdXjCBiJpbsD)** and **[xin-human.rds](https://www.jianguoyun.com/p/DUOyvtUQwdXjCBj9pLsD)**  as examples. 
     * **Data preprocessing**:
     ```r
     # loading the reference dataset
@@ -49,7 +49,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     
     * **Cell assignment**:
     ```r
-    # loading the quary cell and performing cell quality control. Taking **[xin-human.rds](https://www.jianguoyun.com/p/DUOyvtUQwdXjCBj9pLsD)** as an example.
+    # loading the quary cell and performing cell quality control.
     data2<-readRDS('xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
     query_ann<-as.character(data2$cell_type1)
