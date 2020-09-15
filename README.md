@@ -15,8 +15,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
 ![](example_data/Figure_1.jpg)<!-- -->
 ### **scLearn** comprises three steps: data preprocessing, model learning, and cell assignment. 
 * **(1)** In the first step, the main processes comprise routine normalization, cell quality control, rare cell-type filtering, and feature selection; nGene, number of genes; nUMI, number of unique molecular identifiers; P-mitGene, percentage of mitochondrial genes; and G, cell group. 
-* **(2)** In the second step, for single-label single cell assignment, DCA is applied to learn the transformation matrix; For multi-label single cell assignment, MDDM is applied to learn the transformation matrix. Then, with the learned transformation matrix, the transformed reference cell samples are obtained for the following assignment. Also, the thresholds for labeling a cell as “unassigned” for each cell type are also automatically learned. G, cell group; DCA, discriminative component analysis. LTM, Learned Transformation Matrix, which can be calculated by equation 3 for single-label single cell assignment or equation 9 for multi-label single cell assignment, respectively; and TRCM, Transformed Reference Cell Matrix, which can be calculated by equation 4. 
-* **(3)** In the third step, the transformed query cell samples are obtained based on LTM with an available optional cell quality control procedure. The transformed query samples are compared against the transformed reference cell matrix to derive the measurement fulfilling the cell-type assignment with the rejection task. TQCM, Transformed Query Cell Matrix, which can be calculated by equation 5.
+* **(2)** In the second step, for single-label single cell assignment, DCA is applied to learn the transformation matrix; For multi-label single cell assignment, MDDM is applied to learn the transformation matrix. Then, with the learned transformation matrix, the transformed reference cell samples are obtained for the following assignment. The thresholds for labeling a cell as “unassigned” for each cell type are also automatically learned. G, cell group; DCA, discriminative component analysis. LTM, Learned Transformation Matrix, which can be calculated as the optimal transformation matrix for single-label single cell assignment or by equation 6 for multi-label single cell assignment, respectively (see Materials and Methods); and TRCM, Transformed Reference Cell Matrix, which can be calculated by equation 1 (see Materials and Methods).  
+* **(3)** In the third step, the transformed query cell samples are obtained based on LTM with an available optional cell quality control procedure. The transformed query samples are compared against the transformed reference cell matrix to derive the measurement fulfilling the cell-type assignment with the rejection task. TQCM, Transformed Query Cell Matrix, which can be calculated by equation 2 (see Materials and Methods).
 
 ## **Install**
 * **Install**: You can install the **scLearn** package from Github using **devtools** packages with **R>=3.6.1**.
@@ -168,7 +168,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
   * **Cell assignment with pre-trained models**:
     ```r
     # loading the quary cell and performing cell quality control
-    data2<-readRDS('example_data/xin-human.rds')
+    data2<-readRDS('xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
     query_ann<-as.character(data2$cell_type1)
     names(query_ann)<-colnames(data2)
