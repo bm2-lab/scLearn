@@ -139,7 +139,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench_SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench_SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     
-  * **The information of [The pre-trained scLearn models for the 20 mouse organs datasets](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**
+  * **The information of [pre-trained scLearn models for the 20 mouse organs datasets](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**
   
     | Trained model names | Description | No. of cell types |
     | :------: | :------: | :------: |
