@@ -175,7 +175,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
     rawcounts2<-rawcounts2[,names(query_ann)]
     data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
-    
+    ```
+    ```r
     # Assignment with pre-trained models
     # Take pancreas_human_baron.rds as example
     scLearn_model_learning_result<-readRDS("pancreas_human_baron.rds")
