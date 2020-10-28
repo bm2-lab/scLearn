@@ -1,6 +1,6 @@
 # **scLearn: Learning for single cell assignment**
 
-## **Introduction**
+## **Introduction of scLearn**
 * **scLearn** is a learning-based framework that automatically infers quantitative measurement/similarity and threshold that can be used for different single cell assignment tasks, achieving a well-generalized assignment performance on different single cell types. The main contributions of scLearn are (1) scLearn is robust to different assignment tasks with a well-generalized assignment performance, (2) scLearn is efficient in the identification of novel cell types that are absent in the reference datasets and (3) For the first time, a multi-label single cell assignment strategy is proposed in scLearn to assign single cell to proper time status as well as cell type simultaneously, proven to be effective for cell development and lineage analysis with additional temporal information. 
 scLearn is developed as a R package, built in with comprehensive human and mammalian single cell reference datasets and pre-trained models, which can be utilized directly to facilitate broad applications of single cell assignment.
 * **scLearn** a learning-based framework designed to intuitively carry out a cell search by measuring the similarity between query cells and each reference cell cluster centroid utilizing measurement and similarity thresholds learned from reference datasets, rather than manually designing the measurement/similarity or empirically selecting the threshold. Basically, scLearn comprises three main steps: data preprocessing, model learning, and cell assignment:
@@ -62,11 +62,11 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     
     ```
 ### **Multi-label single cell assignment**
-* For illustration purpose, we took the dataset **data_example/ESC.rds** as an example. 
+* For illustration purpose, we took the dataset **[ESC.rds](https://www.jianguoyun.com/p/DeO3PrIQwdXjCBjq0cgD)** as an example. 
     * **Data preprocessing**:
     ```r
     # loading the reference dataset
-    data<-readRDS('example_data/ESC.rds')
+    data<-readRDS('ESC.rds')
     rawcounts<-assays(data)[[1]]
     refe_ann1<-as.character(data$cell_type1)
     names(refe_ann1)<-colnames(data)
@@ -83,10 +83,10 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # training the model
   scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,data_type_filtered$sample_information_timePoint,dim_para=0.999)
     ```
-    * **Cell assignment**: We just use 'example_data/ESC.rds' itself to test the multi-label single cell assignment here.
+    * **Cell assignment**: We just use '[ESC.rds](https://www.jianguoyun.com/p/DeO3PrIQwdXjCBjq0cgD)' itself to test the multi-label single cell assignment here.
     ```r
     # loading the quary cell and performing cell quality control
-    data2<-readRDS('example_data/ESC.rds')
+    data2<-readRDS('ESC.rds')
     rawcounts2<-assays(data2)[[1]]
     query_ann1<-as.character(data2$cell_type1)
     names(query_ann1)<-colnames(data2)
@@ -97,7 +97,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
 ### **Pre-trained scLearn models**
-* **Pre-trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered all the pre-trained models for the 30 datasets used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each pre-trained scLearn models is shown below:
+* **Pre-trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered all the pre-trained models for the **[30 datasets](https://www.jianguoyun.com/p/DVABaNAQqYD2CBiB2MgD)** used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each pre-trained scLearn models is shown below:
 
   * **The information of pre-trained scLearn models**
     | Pre-trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
@@ -139,7 +139,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench_SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench_SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     
-  * **The pre-trained models for [20 mouse organs](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6642641/)**
+  * **The pre-trained models for [20 mouse organs](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**
   
     | Trained model names | Description | No. of cell types |
     | :------: | :------: | :------: |
@@ -194,4 +194,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
-    
+    ## Citation
+    Bin Duan, et al. Learning for single cell assignment. Science Advances, 2020
+
+    ## Contact
+    bioinfo_db@163.com or qiliu@tongji.edu.cn
