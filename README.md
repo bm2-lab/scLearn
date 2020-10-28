@@ -185,10 +185,9 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     length(scLearn_model_learning_result$cell_type_information)
     names(scLearn_model_learning_result$cell_type_information)
     ```
-    ```
-    ## 13
-    ## 'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann'
-    ```
+    13
+    'acinar' 'activated_stellate' 'alpha' 'beta' 'delta' 'ductal' 'endothelial' 'epsilon' 'gamma' 'macrophage' 'mast' 'quiescent_stellate' 'schwann'
+    
     ```
     # Predict the cell types
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
