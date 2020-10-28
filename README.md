@@ -97,9 +97,9 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
 ### **Pre-trained scLearn models**
-* **Pre-trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered all the pre-trained models for the **[30 datasets](https://www.jianguoyun.com/p/DVABaNAQqYD2CBiB2MgD)** used in our study. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each pre-trained scLearn models is shown below:
+* **Pre-trained scLearn models** : For the convenience of users, besides the R package of scLearn, we also offered all the **[pre-trained scLearn models for the 30 datasets](https://www.jianguoyun.com/p/DVABaNAQqYD2CBiB2MgD)** used in our study and the **[pre-trained scLearn models for the 20 mouse organs datasets](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**. These reference datasets comprehensively cover the commonly used brain cells, immune cells, pancreas cells, embryo stem cells, retina cells and lung cancer cell lines with coarse-grained and fine-grained annotation and 20 mouse organs, which can be directly used and beneficial for the related single cell categorizing by experimental researchers. The information of each pre-trained scLearn models is shown below:
 
-  * **The information of pre-trained scLearn models**
+  * **The information of [pre-trained scLearn models of the 30 datasets](https://www.jianguoyun.com/p/DVABaNAQqYD2CBiB2MgD)**
     | Pre-trained model names | Description | No. of cell types | Corresponding dataset(Journal, date) |
     | :------: | :------: | :------: | :------: |
     | pancreas_mouse_baron.rds | Mouse pancreas | 9 | [Baron_mouse(Cell System, 2016)](https://www.ncbi.nlm.nih.gov/pubmed/27667365) |
@@ -139,7 +139,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     | PBMC_human_SM2.rds | Human PBMC | 6 | [PbmcBench_SM2(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     | PBMC_human_SW.rds | Human PBMC | 7 | [PbmcBench_SW(bioRxiv, 2019)](https://doi.org/10.1101/632216) |
     
-  * **The pre-trained models for [20 mouse organs](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**
+  * **The information of [The pre-trained scLearn models for the 20 mouse organs datasets](https://www.jianguoyun.com/p/DQvxMk4QqYD2CBiG2MgD)**
   
     | Trained model names | Description | No. of cell types |
     | :------: | :------: | :------: |
