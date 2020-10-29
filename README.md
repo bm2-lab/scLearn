@@ -52,11 +52,12 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # loading the quary cell and performing cell quality control.
     data2<-readRDS('xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
-    query_ann<-as.character(data2$cell_type1)
-    names(query_ann)<-colnames(data2)
-    query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
-    rawcounts2<-rawcounts2[,names(query_ann)]
-    data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
+    #query_ann<-as.character(data2$cell_type1)
+    #names(query_ann)<-colnames(data2)
+    #query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
+    #rawcounts2<-rawcounts2[,names(query_ann)]
+    #data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
+    data_qc_query<-Cell_qc(rawcounts2,species="Hs")
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
@@ -88,12 +89,13 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # loading the quary cell and performing cell quality control
     data2<-readRDS('ESC.rds')
     rawcounts2<-assays(data2)[[1]]
-    query_ann1<-as.character(data2$cell_type1)
-    names(query_ann1)<-colnames(data2)
-    query_ann2<-as.character(data2$cell_type2)
-    names(query_ann2)<-colnames(data2)
-    rawcounts2<-rawcounts2[,names(query_ann1)]
-    data_qc_query<-Cell_qc(rawcounts2,query_ann1,query_ann2,species="Hs")
+    #query_ann1<-as.character(data2$cell_type1)
+    #names(query_ann1)<-colnames(data2)
+    #query_ann2<-as.character(data2$cell_type2)
+    #names(query_ann2)<-colnames(data2)
+    #rawcounts2<-rawcounts2[,names(query_ann1)]
+    #data_qc_query<-Cell_qc(rawcounts2,query_ann1,query_ann2,species="Hs")
+    data_qc_query<-Cell_qc(rawcounts2,species="Hs")
     # Assignment with trained model above
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
 ### **Pre-trained scLearn models**
@@ -170,11 +172,12 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # loading the quary cell and performing cell quality control
     data2<-readRDS('xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
-    query_ann<-as.character(data2$cell_type1)
-    names(query_ann)<-colnames(data2)
-    query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
-    rawcounts2<-rawcounts2[,names(query_ann)]
-    data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
+    #query_ann<-as.character(data2$cell_type1)
+    #names(query_ann)<-colnames(data2)
+    #query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
+    #rawcounts2<-rawcounts2[,names(query_ann)]
+    #data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
+    data_qc_query<-Cell_qc(rawcounts2,species="Hs")
     ```
     ```r
     # Assignment with pre-trained models
