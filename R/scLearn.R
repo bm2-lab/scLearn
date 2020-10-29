@@ -1,5 +1,5 @@
 ### cell quality control
-Cell_qc<-function(expression_profile,sample_information_cellType,sample_information_timePoint=NULL,species="Hs",gene_low=500,gene_high=10000,mito_high=0.1,umi_low=1500,umi_high=Inf,logNormalize=TRUE,plot=FALSE,plot_path="./quality_control.pdf"){
+Cell_qc<-function(expression_profile,sample_information_cellType=NULL,sample_information_timePoint=NULL,species="Hs",gene_low=500,gene_high=10000,mito_high=0.1,umi_low=1500,umi_high=Inf,logNormalize=TRUE,plot=FALSE,plot_path="./quality_control.pdf"){
   require(stringr)
   if(species=="Hs"){
     mito.genes <- grep("^MT-", rownames(expression_profile), value = FALSE)
@@ -42,7 +42,12 @@ Cell_qc<-function(expression_profile,sample_information_cellType,sample_informat
   }
   SQ_filter<-as.matrix(expression_profile[,which(filter_retain=="retain")])
   SQ_data_qc<-SQ_filter#have adopted total_expr=10000 and log
-  if(is.null(sample_information_timePoint)){
+  if(is.null(sample_information_cellType)){
+    if(is.null(sample_information_timePoint)){
+      return(list("expression_profile"=SQ_data_qc))
+    }
+  }
+ if(is.null(sample_information_timePoint)){
     sample_information_qc<-sample_information_cellType[colnames(SQ_data_qc)]
     return(list("expression_profile"=SQ_data_qc,"sample_information_cellType"=sample_information_qc))
   }
