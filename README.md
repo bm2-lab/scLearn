@@ -187,8 +187,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
     
     ```
-    ## Citation
-    Bin Duan, et al. Learning for single cell assignment. Science Advances, 2020
+## Citation
+Bin Duan, et al. Learning for single cell assignment. Science Advances, 2020
 
-    ## Contact
-    bioinfo_db@163.com or qiliu@tongji.edu.cn
+## Contact
+bioinfo_db@163.com or qiliu@tongji.edu.cn
