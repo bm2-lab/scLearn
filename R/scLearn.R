@@ -364,93 +364,129 @@ correlation<-function(matrix,method=c("pearson","spearman","cosin","euclidean"),
 }
 
 ### predict cell type
-scLearn_cell_assignment<-function(scLearn_model_learning_result,expression_profile_query,vote_rate=0.6,diff=0.05){
-  Vote_class<-function(vec,vote_rate=0.6){
-    vec_len<-length(vec)
-    num<-length(table(vec)[table(vec)==max(table(vec))])
-    if(num>1){
-      return("unassigned")
-    }else if(max(table(vec))>vec_len*vote_rate){
-      return(names(table(vec)[table(vec)==max(table(vec))]))
-    }else{
-      return("unassigned")
-    }
-  }
-  Get_query_hvg<-function(expression_profile,high_varGene_names){
-    missing_num<-length(high_varGene_names)-length(intersect(row.names(expression_profile),high_varGene_names))
-    missing_features<-setdiff(high_varGene_names,intersect(row.names(expression_profile),high_varGene_names))
-    missing_rate<-missing_num/length(high_varGene_names)
-    print(paste("The number of missing features in the query data is ",missing_num,seq=""))
-    print(paste("The rate of missing features in the query data is ",missing_rate,seq=""))
-    if(missing_num>0){
-      missing_data<-matrix(0,missing_num,ncol(expression_profile))
-      row.names(missing_data)<-missing_features
-      expression_profile<-rbind(expression_profile,missing_data)
-    }
-    expression_profile_hvg<-expression_profile[high_varGene_names,]
-    return(expression_profile_hvg)
-  }
-  Assignment_result<-function(expression_profile_query_hvg,feature_matrix,threshold,diff=0.05){
-    options(warn=-1)
-    feature_matrix<-t(feature_matrix)
-    result<-data.frame(cluster_lab=1:ncol(expression_profile_query_hvg),unassigned_case=rep(NA,ncol(expression_profile_query_hvg)),cluster_cor=rep(0,ncol(expression_profile_query_hvg)))
-    row.names(result)<-colnames(expression_profile_query_hvg)
-    for(i in 1:ncol(expression_profile_query_hvg)){
-      cor_result<-rep(0,ncol(feature_matrix))
-      names(cor_result)<-colnames(feature_matrix)
-      for(j in 1:ncol(feature_matrix)){
-        if(is.na(cor(expression_profile_query_hvg[,i],feature_matrix[,j]))){
-          cor_result[j]<-0
-        }else{
-          cor_result[j]<-cor(expression_profile_query_hvg[,i],feature_matrix[,j])
-          }
-      }
-      cor_compare<-cor_result-threshold 
-      if(length(cor_compare[cor_compare>0])==0){
-        result[i,1]<-"unassigned"
-        result[i,2]<-"Dissimilar to all reference cell types"
-        result[i,3]<-NA
-      }
-      if(length(cor_compare[cor_compare>0])==1){
-        result[i,1]<-names(cor_compare[cor_compare>0])
-        result[i,3]<-cor_result[result[i,1]]
-      }
-      if(length(cor_compare[cor_compare>0])>=2){
-        if(sort(cor_result[names(cor_compare[cor_compare>0])],decreasing=T)[1]-sort(cor_result[names(cor_compare[cor_compare>0])],decreasing=T)[2]>=diff){
-          result[i,1]<-names(cor_result[names(cor_compare[cor_compare>0])])[which(cor_result[names(cor_compare[cor_compare>0])]==max(cor_result[names(cor_compare[cor_compare>0])]))][1]
-          result[i,3]<-cor_result[result[i,1]]            
-        }else{
-          result[i,1]<-"unassigned"
-          result[i,2]<-"Similar to multiple existing labels"
-          result[i,3]<-NA
+scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_profile_query, 
+    vote_rate = 0.6, diff = 0.05,threshold_use=TRUE) 
+{
+    Vote_class <- function(vec, vote_rate = 0.6) {
+        vec_len <- length(vec)
+        num <- length(table(vec)[table(vec) == max(table(vec))])
+        if (num > 1) {
+            return("unassigned")
         }
-      }
+        else if (max(table(vec)) > vec_len * vote_rate) {
+            return(names(table(vec)[table(vec) == max(table(vec))]))
+        }
+        else {
+            return("unassigned")
+        }
     }
-    return(result)
-  }
-  expression_profile_query_hvg<-Get_query_hvg(expression_profile_query,scLearn_model_learning_result$high_varGene_names)
-  if(is.list(scLearn_model_learning_result$trans_matrix_learned)){
-    predict_result<-matrix(0,ncol(expression_profile_query),length(scLearn_model_learning_result$trans_matrix_learned))
-    for(r in 1:length(scLearn_model_learning_result$trans_matrix_learned)){
-      expression_profile_query_hvg_ml<-scLearn_model_learning_result$trans_matrix_learned[[r]] %*% expression_profile_query_hvg
-      assignment_result<-Assignment_result(expression_profile_query_hvg_ml,scLearn_model_learning_result$feature_matrix_learned[[r]],threshold = scLearn_model_learning_result$simi_threshold_learned[[r]],diff=diff)
-      predict_result[,r]<-assignment_result[,1]
+    Get_query_hvg <- function(expression_profile, high_varGene_names) {
+        missing_num <- length(high_varGene_names) - length(intersect(row.names(expression_profile), 
+            high_varGene_names))
+        missing_features <- setdiff(high_varGene_names, intersect(row.names(expression_profile), 
+            high_varGene_names))
+        missing_rate <- missing_num/length(high_varGene_names)
+        print(paste("The number of missing features in the query data is ", 
+            missing_num, seq = ""))
+        print(paste("The rate of missing features in the query data is ", 
+            missing_rate, seq = ""))
+        if (missing_num > 0) {
+            missing_data <- matrix(0, missing_num, ncol(expression_profile))
+            row.names(missing_data) <- missing_features
+            expression_profile <- rbind(expression_profile, missing_data)
+        }
+        expression_profile_hvg <- expression_profile[high_varGene_names, 
+            ]
+        return(expression_profile_hvg)
     }
-    predict_result_final<-apply(predict_result,1,Vote_class,vote_rate=vote_rate)
-    predict_result_final<-as.data.frame(predict_result_final)
-    predict_result_final$sample<-colnames(expression_profile_query)
-    predict_result_final$predict_result_final<-as.character(predict_result_final$predict_result_final)
-    colnames(predict_result_final)<-c("Predict_cell_type","Query_cell_id")
-    predict_result_final<-predict_result_final[,c("Query_cell_id","Predict_cell_type")]
-    return(predict_result_final)
-  }else{
-    expression_profile_query_hvg_ml <- scLearn_model_learning_result$trans_matrix_learned %*% expression_profile_query_hvg
-    assignment_result <- Assignment_result(expression_profile_query_hvg_ml, scLearn_model_learning_result$feature_matrix_learned, threshold = scLearn_model_learning_result$simi_threshold_learned, diff = diff)
-    assignment_result$Query_cell_id <- row.names(assignment_result)
-    assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
-    assignment_result<- assignment_result[, c("Query_cell_id","Predict_cell_type")]
-    return(assignment_result)
-  }
+    Assignment_result <- function(expression_profile_query_hvg, 
+        feature_matrix, threshold, diff = 0.05,threshold_use=TRUE) {
+        feature_matrix <- t(feature_matrix)
+        result <- data.frame(cluster_lab = 1:ncol(expression_profile_query_hvg), 
+            cluster_cor = rep(0, ncol(expression_profile_query_hvg)))
+        row.names(result) <- colnames(expression_profile_query_hvg)
+        if(threshold_use==FALSE){
+            threshold<--2
+        }
+        for (i in 1:ncol(expression_profile_query_hvg)) {
+            cor_result <- rep(0, ncol(feature_matrix))
+            names(cor_result) <- colnames(feature_matrix)
+            if(sum(expression_profile_query_hvg[,i])==0){
+                result[i, 1] <- "unassigned"
+                result[i, 2] <- "Gene_Missing"
+                next    
+            }
+            for (j in 1:ncol(feature_matrix)) {
+                cor_result[j] <- cor(expression_profile_query_hvg[, 
+                  i], feature_matrix[, j])
+            }
+            cor_compare <- cor_result - threshold
+            if (length(cor_compare[cor_compare > 0]) == 0) {
+                result[i, 1] <- "unassigned"
+                result[i, 2] <- "Novel_Cell"
+            }
+            if (length(cor_compare[cor_compare > 0]) == 1) {
+                result[i, 1] <- names(cor_compare[cor_compare > 
+                  0])
+                result[i, 2] <- cor_result[result[i, 1]]
+            }
+            if (length(cor_compare[cor_compare > 0]) >= 2) {
+                if (sort(cor_result[names(cor_compare[cor_compare > 
+                  0])], decreasing = T)[1] - sort(cor_result[names(cor_compare[cor_compare > 
+                  0])], decreasing = T)[2] >= diff) {
+                  result[i, 1] <- names(cor_result[names(cor_compare[cor_compare > 
+                    0])])[which(cor_result[names(cor_compare[cor_compare > 
+                    0])] == max(cor_result[names(cor_compare[cor_compare > 
+                    0])]))][1]
+                  result[i, 2] <- cor_result[result[i, 1]]
+                }
+                else {
+                  result[i, 1] <- "unassigned"
+                  result[i, 2] <- "Too similar to multiple cell type"
+                }
+            }
+        }
+        return(result)
+    }
+    expression_profile_query_hvg <- Get_query_hvg(expression_profile_query, 
+        scLearn_model_learning_result$high_varGene_names)
+    if (length(scLearn_model_learning_result$trans_matrix_learned)>1) {
+        predict_result <- matrix(0, ncol(expression_profile_query), 
+            length(scLearn_model_learning_result$trans_matrix_learned))
+        for (r in 1:length(scLearn_model_learning_result$trans_matrix_learned)) {
+            expression_profile_query_hvg_ml <- scLearn_model_learning_result$trans_matrix_learned[[r]] %*% 
+                expression_profile_query_hvg
+            assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
+                scLearn_model_learning_result$feature_matrix_learned[[r]], 
+                threshold = scLearn_model_learning_result$simi_threshold_learned[[r]], 
+                diff = diff,threshold_use=threshold_use)
+            predict_result[, r] <- assignment_result[, 1]
+        }
+        predict_result_final <- apply(predict_result, 1, Vote_class, 
+            vote_rate = vote_rate)
+        predict_result_final <- as.data.frame(predict_result_final)
+        predict_result_final$sample <- colnames(expression_profile_query)
+        predict_result_final$predict_result_final <- as.character(predict_result_final$predict_result_final)
+        colnames(predict_result_final) <- c("Predict_cell_type", 
+            "Query_cell_id")
+        predict_result_final <- predict_result_final[, c("Query_cell_id", 
+            "Predict_cell_type")]
+        return(predict_result_final)
+    }
+    else {
+        expression_profile_query_hvg_ml <- scLearn_model_learning_result$trans_matrix_learned[[1]] %*% 
+            expression_profile_query_hvg
+        assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
+            scLearn_model_learning_result$feature_matrix_learned[[1]], 
+            threshold = scLearn_model_learning_result$simi_threshold_learned[[1]], 
+            diff = diff)
+        assignment_result$Query_cell_id <- row.names(assignment_result)
+        assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
+        assignment_result$Additional_information <- as.character(assignment_result$cluster_cor)
+        assignment_result <- assignment_result[, c("Query_cell_id", 
+            "Predict_cell_type","Additional_information")]
+        return(assignment_result)
+    }
 }
 
 ### sankey graph
