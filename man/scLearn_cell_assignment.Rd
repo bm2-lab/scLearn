@@ -8,7 +8,7 @@ To predict the cell assignment result with trained scLearn model.
 To predict the cell assignment result with trained scLearn model.
 }
 \usage{
-scLearn_cell_assignment(scLearn_model_learning_result, expression_profile_query, vote_rate = 0.6, diff = 0.05)
+scLearn_cell_assignment(scLearn_model_learning_result, expression_profile_query, vote_rate = 0.6, diff = 0.05,threshold_use=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -23,6 +23,10 @@ scLearn_cell_assignment(scLearn_model_learning_result, expression_profile_query,
 }
   \item{diff}{
   For similar cell types, it is hard to distinguish. If a query cell, if its similarity value to different cell types is too close, then it will be assigned as "unassigned". Default is 0.05. If you want a less strict assignment result for "unassigned", you can set it smaller,such as 0.01.
+}
+  \item{threshold_use}{
+   Default is TRUE. If TRUE, the calculated thresholds to determine "unassigned" cells were used. If FALSE, the calculated thresholds to determine "unassigned" cells were not used, you will get a weak strict result. 
+  
 }
 }
 \value{
