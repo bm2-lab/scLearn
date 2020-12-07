@@ -182,9 +182,6 @@ scLearn_model_learning<-function(high_varGene_names,expression_profile,sample_in
     threshold_cluster_trans<-list()
     feature_matrix_trans<-list()
     trans_matrix<-list()
-    if(bootstrap_times<2){
-      warning("The bootstrap_times should be at least larger than 1.")
-    }
     for(r in 1:bootstrap_times){
       print(paste("Bootstrapying",r))
       trans_result<-runDCA(high_varGene_names,expression_profile,sample_information_cellType,strength = 0.1,seed=r)
@@ -450,7 +447,8 @@ scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_pro
     }
     expression_profile_query_hvg <- Get_query_hvg(expression_profile_query, 
         scLearn_model_learning_result$high_varGene_names)
-    if (length(scLearn_model_learning_result$trans_matrix_learned)>1) {
+    if(is.list(scLearn_model_learning_result$trans_matrix_learned)){
+      if (length(scLearn_model_learning_result$trans_matrix_learned)>1) {
         predict_result <- matrix(0, ncol(expression_profile_query), 
             length(scLearn_model_learning_result$trans_matrix_learned))
         for (r in 1:length(scLearn_model_learning_result$trans_matrix_learned)) {
@@ -479,6 +477,21 @@ scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_pro
         assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
             scLearn_model_learning_result$feature_matrix_learned[[1]], 
             threshold = scLearn_model_learning_result$simi_threshold_learned[[1]], 
+            diff = diff)
+        assignment_result$Query_cell_id <- row.names(assignment_result)
+        assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
+        assignment_result$Additional_information <- as.character(assignment_result$cluster_cor)
+        assignment_result <- assignment_result[, c("Query_cell_id", 
+            "Predict_cell_type","Additional_information")]
+        return(assignment_result)
+    }
+   }
+    else{
+        expression_profile_query_hvg_ml <- scLearn_model_learning_result$trans_matrix_learned %*% 
+            expression_profile_query_hvg
+        assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
+            scLearn_model_learning_result$feature_matrix_learned, 
+            threshold = scLearn_model_learning_result$simi_threshold_learned, 
             diff = diff)
         assignment_result$Query_cell_id <- row.names(assignment_result)
         assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
