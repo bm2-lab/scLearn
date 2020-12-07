@@ -43,8 +43,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     
     * **Model learning**:
     ```r
-    # training the model
-  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,bootstrap_times=10)
+    # training the model. To improve the accuracy for "unassigned" cell, you can increase "bootstrap_times", but it will takes longer time. The default value of "bootstrap_times" is 10.
+  scLearn_model_learning_result<-scLearn_model_learning(high_varGene_names,data_type_filtered$expression_profile,data_type_filtered$sample_information_cellType,bootstrap_times=1)
     ```
     
     * **Cell assignment**:
@@ -59,8 +59,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     #data_qc_query<-Cell_qc(rawcounts2,query_ann,species="Hs")
     ### 
     data_qc_query<-Cell_qc(rawcounts2,species="Hs",gene_low=50,umi_low=50)
-    # Assignment with trained model above
-    scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile)
+    # Assignment with trained model above. To get a less strict result for "unassigned" cells, you can decrease "diff" and "vote_rate". If you are sure that the cell type of query cells must be in the reference dataset, you can set "threshold_use" as FALSE. It means you don't want to use the thresholds learned by scLearn.
+    scLearn_predict_result<-scLearn_cell_assignment(scLearn_model_learning_result,data_qc_query$expression_profile,diff=0.05,threshold_use=TRUE,vote_rate=0.6)
     
     ```
 ### **Multi-label single cell assignment**
