@@ -23,6 +23,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
 
     ```r
     library(devtools)
+    library(SingleCellExperiment)
+    library(M3Drop)
     install_github("bm2-lab/scLearn")
     ```
 ## **Tutorial**
