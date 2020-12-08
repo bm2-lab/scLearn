@@ -194,7 +194,8 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     
     ```
 ## Citation
-Bin Duan, et al. Learning for single cell assignment. Science Advances, 2020
+B. Duan, C. Zhu, G. Chuai, C. Tang, X. Chen, S. Chen, S. Fu, G. Li, Q. Liu, Learning for
+single-cell assignment. Sci. Adv. 6, eabd0855 (2020)
 
 ## Contact
 bioinfo_db@163.com or qiliu@tongji.edu.cn
