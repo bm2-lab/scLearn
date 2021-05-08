@@ -477,7 +477,7 @@ scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_pro
         assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
             scLearn_model_learning_result$feature_matrix_learned[[1]], 
             threshold = scLearn_model_learning_result$simi_threshold_learned[[1]], 
-            diff = diff)
+            diff = diff, threshold_use=threshold_use)
         assignment_result$Query_cell_id <- row.names(assignment_result)
         assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
         assignment_result$Additional_information <- as.character(assignment_result$cluster_cor)
@@ -492,7 +492,7 @@ scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_pro
         assignment_result <- Assignment_result(expression_profile_query_hvg_ml, 
             scLearn_model_learning_result$feature_matrix_learned, 
             threshold = scLearn_model_learning_result$simi_threshold_learned, 
-            diff = diff)
+            diff = diff,threshold_use=threshold_use)
         assignment_result$Query_cell_id <- row.names(assignment_result)
         assignment_result$Predict_cell_type <- as.character(assignment_result$cluster_lab)
         assignment_result$Additional_information <- as.character(assignment_result$cluster_cor)
