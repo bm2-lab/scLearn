@@ -54,6 +54,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # loading the quary cell and performing cell quality control.
     data2<-readRDS('xin-human.rds')
     rawcounts2<-assays(data2)[[1]]
+    ### the true labels of this test datasets 
     #query_ann<-as.character(data2$cell_type1)
     #names(query_ann)<-colnames(data2)
     #query_ann<-query_ann[query_ann %in% c("alpha","beta","delta","gamma")]
@@ -92,6 +93,7 @@ scLearn is developed as a R package, built in with comprehensive human and mamma
     # loading the quary cell and performing cell quality control
     data2<-readRDS('ESC.rds')
     rawcounts2<-assays(data2)[[1]]
+    ### the true labels of this test dataset
     #query_ann1<-as.character(data2$cell_type1)
     #names(query_ann1)<-colnames(data2)
     #query_ann2<-as.character(data2$cell_type2)
