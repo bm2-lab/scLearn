@@ -362,7 +362,7 @@ correlation<-function(matrix,method=c("pearson","spearman","cosin","euclidean"),
 
 ### predict cell type
 scLearn_cell_assignment<-function (scLearn_model_learning_result, expression_profile_query, 
-    vote_rate = 0.6, diff = 0.05,threshold_use=TRUE) 
+    vote_rate = 0.6, diff = 0.05,threshold_use=FALSE) 
 {
     Vote_class <- function(vec, vote_rate = 0.6) {
         vec_len <- length(vec)
