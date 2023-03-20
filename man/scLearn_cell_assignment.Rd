@@ -25,7 +25,7 @@ scLearn_cell_assignment(scLearn_model_learning_result, expression_profile_query,
   For similar cell types, it is hard to distinguish. If a query cell, if its similarity value to different cell types is too close, then it will be assigned as "unassigned". Default is 0.05. If you want a less strict assignment result for "unassigned", you can set it smaller,such as 0.01.
 }
   \item{threshold_use}{
-   Default is TRUE. If TRUE, the calculated thresholds to determine "unassigned" cells were used. If FALSE, the calculated thresholds to determine "unassigned" cells were not used, you will get a weak strict result. 
+   Default is FALSE. If TRUE, the calculated thresholds to determine "unassigned" cells were used. If FALSE, the calculated thresholds to determine "unassigned" cells were not used, you will get a weak strict result. 
   
 }
 }
