@@ -200,4 +200,4 @@ B. Duan, C. Zhu, G. Chuai, C. Tang, X. Chen, S. Chen, S. Fu, G. Li, Q. Liu, Lear
 single-cell assignment. Sci. Adv. 6, eabd0855 (2020)
 
 ## Contact
-bioinfo_db@163.com or qiliu@tongji.edu.cn
+binduan@sjtu.edu.cn or qiliu@tongji.edu.cn
